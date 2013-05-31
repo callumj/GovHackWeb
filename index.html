@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Backbone Boilerplate</title>
+
+  <!-- Application styles. -->
+
+  <!--(if target dummy)><!-->
+  <link rel="stylesheet" href="/app/styles/index.css">
+  <!--<!(endif)-->
+
+  <!--(if target release)>
+  <link rel="stylesheet" href="index.css">
+  <!(endif)-->
+
+  <!--(if target debug)>
+  <link rel="stylesheet" href="index.css">
+  <!(endif)-->
+</head>
+
+<body>
+  <!-- Application container. -->
+
+  <main role="main" id="main">
+  </main>
+
+  <!-- Application source. -->
+
+  <!--(if target dummy)><!-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARYxWXRAb58n_lA3X_YhLQ2zA94PGNFoM&sensor=true"></script>
+  <script data-main="/app/config" src="/vendor/js/libs/require.js"></script>
+  <!--<!(endif)-->
+
+  <!--(if target release)>
+  <script src="require.js"></script>
+  <!(endif)-->
+
+  <!--(if target debug)>
+  <script src="require.js"></script>
+  <!(endif)-->
+
+  <div id="map-canvas" style="width: 100%; height: 100%; position: absolute"></div>
+</body>
+</html>
