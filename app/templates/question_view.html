@@ -1,15 +1,17 @@
 <label>{{text}}</label>
-<input type="hidden" name="key" value="{{key}}" />
-{{#if isBool}}
-  <input class="next true {{hideable true}}"  type="button" value="Yes" />
-  <input class="next false {{hideable false}}" type="button" value="No" />
-{{/if}}
-{{#if isString}}
-  <input type="text" name="response" />
-  <input class="next" type="submit" value="Next" />
-{{/if}}
-{{#if isMulti}}
-  {{#each multiValues}}
-    <input class="next true {{hideable true}}"  type="button" value="{{s}}" data-val="{{key}}" />
-  {{/each}}
-{{/if}}
+<div class="buttons">
+  <input type="hidden" name="key" value="{{key}}" />
+  {{#if isBool}}
+    <input class="next true {{hideable true}}"  type="button" value="Yes" />
+    <input class="next false {{hideable false}}" type="button" value="No" />
+  {{/if}}
+  {{#if isString}}
+    <input type="text" name="response" />
+    <input class="next" type="submit" value="Next" />
+  {{/if}}
+  {{#if isMulti}}
+    {{#each multiValues}}
+      <input class="next true {{hideable true}}"  type="button" value="{{s}}" data-val="{{key}}" />
+    {{/each}}
+  {{/if}}
+</div>

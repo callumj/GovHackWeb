@@ -6,36 +6,133 @@
 /*-- Application stylesheets. -----------------------------------------------*/
 
 
+* {
+  font-family: 'CoreSansN35Light';
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
 
-#map-container {
-  width: 1000px;
-  height: 500px;
-  margin: 0 auto;
-  -webkit-perspective: 800;
-  position: absolute;
-  top: 100px;
-  right: 0px;
-  left: 0px;
 }
 
-.map {
+h2 {
+  font-size: 16px;
+  color: #b5b5b5;
+  text-align: center;
+}
+
+
+
+header {
+  width: 100%;
+  height: 530px;
+  background: #3c3c3c;
+  position: relative;
+  overflow: hidden;
+}
+
+header h1 {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+  background: #999;
+  margin-top: 40px;
+  margin-bottom:60px;
+}
+
+
+#question-container {
+  width: 545px;
+  height: 275px;
+  margin: 0 auto;
+  z-index: 200;
+  position: relative;
+  background: url('../images/question-content-shadow.png') no-repeat center bottom ;
+}
+
+
+
+#question-content {
+  width: 470px;
+  height: 80px;
+  background: #fff;
+  border: 1px solid #bababa;
+  padding: 0px 20px;
+  line-height: 78px;
+  margin: 0 auto;
+
+}
+
+#question-content label {
+  float: left;
+
+}
+
+#question-content .buttons {
+  float: right;
+  text-align: right;
+
+}
+
+
+
+#map-container {
+  width: 800px;
+  height: 450px;
+  margin: 0 auto;
+  -webkit-perspective: 1000;
+  position: absolute;
+  top: 300px;
+  right: 0px;
+  left: 0px;
+  text-align: center;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+#map-container:after {
+  content: '\00a0';
+  width: 994px;
+  height: 10px;
+  background: #d3ccb7;
+  position: absolute;
+  left: -97px;
+  right: 0px;
+  margin-top: -85px;
 
 
 }
 
 
 #map-canvas{
-  -webkit-transform: rotatex(45deg) !important;
-  -webkit-transform-origin: 50% 50%;
+  -webkit-transform: rotate3d(1, 0, 0, 60deg) !important;
   background: #333;
-  width: 1000px;
-  height: 500px;
+  -webkit-transform-origin: center center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
 
   -webkit-transition: all 1s ease-in-out;
 }
 
 
-#map-canvas.foreground {
-  -webkit-transform: rotate3d(0, 0, 0, 45deg) !important;
 
+#map-container.foreground {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+}
+
+#map-container.foreground:after {
+  display: none;
+}
+
+
+#map-canvas.foreground {
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotate3d(1, 0, 0, 0deg) !important;
+
+}
+
+
+html.map-active #question-container {
+  display: none;
 }
