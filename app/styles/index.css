@@ -5,6 +5,7 @@
 
 /*-- Application stylesheets. -----------------------------------------------*/
 
+@import "fonts.css";
 
 * {
   font-family: 'CoreSansN35Light';
