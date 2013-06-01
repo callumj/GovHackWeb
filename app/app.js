@@ -33,13 +33,15 @@ define([
     }
   });
 
-  Handlebars.registerHelper('hideable', function(value) {
-    if (this.val) {
-      if (this.type == "multi") {
-        debugger
-      }
+  Handlebars.registerHelper('hideable', function(value, context) {
+    var scope = this;
 
-      if (this.val === value) {
+    // support receiving a relative context
+    if (context && context.val != null)
+      scope = context;
+
+    if (scope.val != null) {
+      if (scope.val === value) {
         return "hidden";
       }
     }

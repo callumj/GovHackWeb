@@ -11,11 +11,16 @@ define([
       this.set({});
     },
 
+    removeMarker: function() {
+      if (this.attributes.marker)
+        this.attributes.marker.setMap(null);
+    },
+
     address: function() {
       return this.attributes.suburb_name + ", WA";
     },
 
-    drawMarker: function(drawn_callback) {
+    populateLocation: function(location_callback) {
       var geocoder = new google.maps.Geocoder();
       var context = this;
       geocoder.geocode({'address': this.address()}, function(results, status) {
@@ -25,18 +30,20 @@ define([
 
         context.attributes["location"] = first.geometry.location;
 
-        var marker = new google.maps.Marker({
-          position: context.attributes.location,
-          map: Map.loadedMap(),
-          title: context.attributes.suburb_name,
-          animation: google.maps.Animation.DROP
-        });
-
-        context.attributes["marker"] = marker;
-
-        if (drawn_callback)
-          drawn_callback(context);
+        if (location_callback)
+          location_callback(context);
       });
+    },
+
+    drawMarker: function() {
+      var marker = new google.maps.Marker({
+        position: this.attributes.location,
+        map: Map.loadedMap(),
+        title: this.attributes.suburb_name,
+        animation: google.maps.Animation.DROP
+      });
+
+      this.attributes["marker"] = marker;
     }
 
   });

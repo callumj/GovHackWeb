@@ -14,8 +14,12 @@ define([
       if (QuestionController.booted)
         return;
 
+      QuestionController.booted = true;
+
+      attachEvents();
       QuestionController.activeQuestionnaire = new Questionnaire();
       MapController.initMap();
+      QuestionHistoryController.handleHistoryChange = QuestionController.historyUpdated;
     }
 
     var nextQuestion = function() {
@@ -26,6 +30,9 @@ define([
         QuestionController.activeView.render();
       else
         QuestionController.activeView.el.hide();
+
+      if (QuestionController.activeQuestionnaire.reachedMinimumSufficientData())
+        showActionButton();
     }
 
     var startViews = function() {
@@ -34,30 +41,62 @@ define([
 
       QuestionController.activeView = new QuestionView();
       QuestionController.activeView.el = $("#question-content");
-      QuestionController.activeView.eventHandler = eventHandler;
+      QuestionController.activeView.eventHandler = remoteEventHandler;
     }
 
-    var eventHandler = function(type, event) {
+    var showActionButton = function() {
+      $("#question-controller").removeClass("hidden");
+    }
+
+    var showMapData = function() {
+      MapController.drawData();
+      QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
+      MapController.mapViewable = true;
+    }
+
+    var attachEvents = function() {
+      $("#question-controller .action-button").on("click", handleActionButton)
+    }
+
+    var handleActionButton = function(event) {
+      showMapData();
+    }
+
+    var remoteEventHandler = function(type, event) {
       if (type == "nextClick")
         nextClickEvent(event);
+    }
+
+    var historyUpdated = function(type, event) {
+      if (type == "nextClick") {
+        QuestionController.activeQuestionnaire.respondToQuestion(changedView.model.key, changedView.received_value);
+        RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
+        showMapData();
+      }
     }
 
     var nextClickEvent = function(changedView) {
       QuestionController.activeQuestionnaire.respondToQuestion(changedView.model.key, changedView.received_value);
       RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
       nextQuestion();
+
+      if (MapController.mapViewable)
+        showMapData();
     }
 
     var dataReturnedEvent = function(data) {
-      MapController.drawData(data);
-      QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
+      MapController.setData(data);
     }
 
     return {
-      firstBoot:         firstBoot,
-      nextQuestion:      nextQuestion,
-      startViews:        startViews,
-      dataReturnedEvent: dataReturnedEvent
+      firstBoot:          firstBoot,
+      nextQuestion:       nextQuestion,
+      startViews:         startViews,
+      dataReturnedEvent:  dataReturnedEvent,
+      remoteEventHandler: remoteEventHandler,
+      historyUpdated:     historyUpdated,
+      handleActionButton: handleActionButton,
+      mapViewable:        false,
     }
 
   })();
@@ -66,7 +105,7 @@ define([
     QuestionController.firstBoot();
     window.setTimeout(function() {
       QuestionController.nextQuestion();
-    }, 100);
+    }, 200);
   });
 
   window.QuestionController = QuestionController;

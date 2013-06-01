@@ -28,6 +28,8 @@ define([
         ]
 
         callback(fake_data);
+      } else {
+        callback([]);
       }
     }
 
