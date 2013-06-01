@@ -17,36 +17,42 @@ define([
         suburb.removeMarker();
       });
 
-      if (!MapController.mapInView) {
-        animateMapIn();
-        MapController.mapInView = true;
-      }
-
-
-      setTimeout(function() {
-        renderMarkers(data_set);
-      }, 200);
+      fetchLocationData(data_set);
     }
 
-    var renderMarkers = function(data_set) {
+    var fetchLocationData = function(data_set) {
       _.each(data_set, function(data) {
         var suburb = new Suburb(data);
         MapController.activeSuburbs.push(suburb);
-        suburb.drawMarker(MapController.markerDrawn);
+        suburb.populateLocation(MapController.locationReady);
       });
     }
 
     var animateMapIn = function() {
+      if (MapController.mapInView)
+        return;
+
       var map_div = $( Map.loadedMap().getDiv());
       map_div.addClass("foreground");
       map_div.parents("#map-container").addClass("foreground");
       $("html").addClass("map-active");
+      MapController.mapInView = true;
     }
 
-    var markerDrawn = function(suburb) {
-      MapController.drawnMarkers += 1;
-      if (MapController.drawnMarkers == MapController.activeSuburbs.length)
+    var locationReady = function(suburb) {
+      MapController.locationsLoaded += 1;
+      if (MapController.locationsLoaded == MapController.activeSuburbs.length) {
         centerMap();
+        animateMapIn();
+        setTimeout(drawMarkers, 1300);
+      }
+    }
+
+    var drawMarkers = function() {
+      google.maps.event.trigger(Map.loadedMap(), 'resize');
+      _.each(MapController.activeSuburbs, function(suburb) {
+        suburb.drawMarker();
+      })
     }
 
     var centerMap = function() {
@@ -75,13 +81,15 @@ define([
     return {
       drawData:           drawData,
       initMap:            initMap,
-      markerDrawn:        markerDrawn,
+      locationReady:      locationReady,
+      drawMarkers:        drawMarkers,
       centerMap:          centerMap,
       animateMarkers:     animateMarkers,
       dropAnimateMarkers: dropAnimateMarkers,
       mapInView:          false,
-      activeSuburbs: [],
-      drawnMarkers:  0
+      activeSuburbs:      [],
+      drawnMarkers:       0,
+      locationsLoaded:    0
     }
 
   })();
