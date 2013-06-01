@@ -11,7 +11,7 @@ define([
         return Map.activeMap;
 
       var mapOptions = {
-        zoom: 14,
+        zoom: 12,
         center: new google.maps.LatLng(-31.9530044, 115.8585),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         overviewMapControl: false,

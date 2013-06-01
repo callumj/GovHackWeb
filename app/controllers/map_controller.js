@@ -16,13 +16,19 @@ define([
       _.each(MapController.activeSuburbs, function(suburb) {
         suburb.removeMarker();
       });
+
+      animateMapIn();
+      setTimeout(function() {
+        renderMarkers(data_set);
+      }, 200);
+    }
+
+    var renderMarkers = function(data_set) {
       _.each(data_set, function(data) {
         var suburb = new Suburb(data);
         MapController.activeSuburbs.push(suburb);
         suburb.drawMarker(MapController.markerDrawn);
       });
-
-      animateMapIn();
     }
 
     var animateMapIn = function() {

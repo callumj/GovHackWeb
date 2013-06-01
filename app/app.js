@@ -35,7 +35,6 @@ define([
 
   Handlebars.registerHelper('hideable', function(value) {
     if (this.val) {
-      debugger;
       if (this.type == "multi") {
         debugger
       }
