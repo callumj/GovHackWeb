@@ -48,6 +48,10 @@ define([
 
     reachedMinimumSufficientData: function() {
       return this.attributes.answeredKeys.length >= 3;
+    },
+
+    percentageComplete: function() {
+      return ((this.attributes.answeredKeys.length / QUESTIONNAIRES.length) * 100.0) - 100;
     }
 
   });

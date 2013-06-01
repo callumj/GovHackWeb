@@ -49,6 +49,10 @@ define([
       $("#question-controller").removeClass("hidden");
     }
 
+    var updateActionButtonProgress = function() {
+      $("#question-controller .action-button").attr("style", "background-position: " + QuestionController.activeQuestionnaire.percentageComplete() + "%");
+    }
+
     var showMapData = function() {
       MapController.drawData();
       QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
@@ -68,21 +72,25 @@ define([
         nextClickEvent(event);
     }
 
-    var historyUpdated = function(type, event) {
+    var historyUpdated = function(type, changedView) {
       if (type == "nextClick") {
-        QuestionController.activeQuestionnaire.respondToQuestion(changedView.model.key, changedView.received_value);
-        RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
+        updateData(changedView)
         showMapData();
       }
     }
 
     var nextClickEvent = function(changedView) {
-      QuestionController.activeQuestionnaire.respondToQuestion(changedView.model.key, changedView.received_value);
-      RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
+      updateData(changedView)
       nextQuestion();
 
       if (MapController.mapViewable)
         showMapData();
+    }
+
+    var updateData = function(changedView) {
+      QuestionController.activeQuestionnaire.respondToQuestion(changedView.model.key, changedView.received_value);
+      RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
+      updateActionButtonProgress();
     }
 
     var dataReturnedEvent = function(data) {
