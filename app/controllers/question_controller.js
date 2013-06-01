@@ -66,7 +66,7 @@ define([
     QuestionController.firstBoot();
     window.setTimeout(function() {
       QuestionController.nextQuestion();
-    }, 100);
+    }, 200);
   });
 
   window.QuestionController = QuestionController;

@@ -36,6 +36,7 @@ define([
   Handlebars.registerHelper('hideable', function(value, context) {
     var scope = this;
 
+    // support receiving a relative context
     if (context && context.val)
       scope = context;
 
