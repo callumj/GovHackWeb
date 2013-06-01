@@ -84,10 +84,13 @@ define([
     }
 
     var nextClickEvent = function(changedView) {
-      updateData(changedView)
-      nextQuestion();
+      updateData(changedView);
+      var exhausted = QuestionController.activeQuestionnaire.isExhausted();
 
-      if (MapController.mapViewable)
+      if (!exhausted)
+        nextQuestion();
+
+      if (exhausted|| MapController.mapViewable)
         showMapData();
     }
 
