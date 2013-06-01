@@ -52,6 +52,10 @@ define([
 
     percentageComplete: function() {
       return ((this.attributes.answeredKeys.length / QUESTIONNAIRES.length) * 100.0);
+    },
+
+    isExhausted: function() {
+      return this.attributes.answeredKeys.length == QUESTIONNAIRES.length;
     }
 
   });
