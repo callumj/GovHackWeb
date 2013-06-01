@@ -85,6 +85,9 @@ define([
       google.maps.event.addListener(marker, 'mouseout', function() {
         context.buildInfoWindow().close(Map.loadedMap(), marker);
       });
+      google.maps.event.addListener(marker, 'click', function(event) {
+        context.markerClickEvent(context, event)
+      });
     }
 
   });
