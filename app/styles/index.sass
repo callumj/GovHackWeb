@@ -1,0 +1,186 @@
+@import 'bourbon'
+/*-- HTML5 Boilerplate. -----------------------------------------------------
+
+@import "../../vendor/h5bp/css/normalize.css"
+@import "../../vendor/h5bp/css/main.css"
+
+/*-- Application stylesheets. -----------------------------------------------
+
+*
+  font-family: 'CoreSansN35Light'
+  @include box-sizing(border-box)
+  text-rendering: optimizeLegibility
+
+h2
+  font-size: 16px
+  color: #b5b5b5
+  text-align: center
+  font-weight: normal
+
+header
+  width: 100%
+  height: 530px
+  background: #3c3c3c
+  position: relative
+  overflow: hidden
+  .logo-container
+    width: 160px
+    height: 160px
+    margin: 0 auto
+    margin-top: 40px
+    margin-bottom: 60px
+    position: relative
+
+    .map-pin
+      background: url('../images/logo-pin.svg') no-repeat center bottom
+      background-size: cover
+      width: 50px
+      height: 65px
+      overflow: hidden
+      margin: 0 auto
+      position: absolute
+      top: 0px
+      left: 0
+      right: 0
+      margin: 0 auto
+      @include animation-delay(5s)
+      @include animation(pinDown 1s ease-in-out)
+
+
+    .map
+      background: url('../images/logo-bottom.svg') no-repeat center bottom
+      background-size: cover
+      width: 105px
+      height: 65px
+      overflow: hidden
+      position: absolute
+      top: 30px
+      left: 0
+      right: 0
+      margin: 0 auto
+      @include animation(mapUp 0.5s ease-in-out)
+
+  #question-container
+    width: 545px
+    height: 275px
+    margin: 0 auto
+    z-index: 200
+    position: relative
+    background: url('../images/question-content-shadow.png') no-repeat left bottom
+    -webkit-transition: all 0.5s ease-in-out
+
+
+
+    #question-content
+      width: 470px
+      height: 80px
+      background: #fff
+      border: 1px solid #bababa
+      padding: 0px 20px
+      line-height: 78px
+      left: 37.5px
+      position: absolute
+      z-index: 20
+      -webkit-transition: all 0.5s ease-in-out
+      label
+        float: left
+      .buttons
+        float: right
+        text-align: right
+
+        input[type="button"]
+          width: 65px
+          border: none
+          background-color: #fff
+          color: #939393
+          font-family: 'CoreSansN35Light'
+          font-size: 14px
+
+          &:hover
+            color: #2ecc71
+            text-decoration: underline
+
+          &:active
+            font-size: 12px
+
+    #question-controller
+      width: 150px
+      height: 80px
+      line-height: 80px
+      color: #fff
+      right: 0px
+      position: absolute
+      -webkit-transition: all 0.5s ease-in-out
+
+      input[type="submit"]
+        width: 150px
+        height: 80px
+        background: #49ba6f
+        border: 0px
+        padding: 0px 20px
+
+
+      &.hidden
+        right: 35px
+        display: block !important
+
+
+
+
+
+
+#map-container
+  width: 800px
+  height: 450px
+  margin: 0 auto
+  @include perspective(1000)
+  position: absolute
+  top: 300px
+  right: 0px
+  left: 0px
+  text-align: center
+  @include transition (all 1.0s ease-in-out)
+  &:after
+    content: '\00a0'
+    width: 994px
+    height: 10px
+    background: #d3ccb7
+    position: absolute
+    left: -97px
+    right: 0px
+    margin-top: -85px
+
+  #map-canvas
+    @include transform(rotate3d(60, 0, 0, 60deg) !important)
+    @include transform-style(preserve-3d)
+    background: #333
+    -webkit-transform-origin: center center
+    width: 100%
+    height: 100%
+    margin: 0 auto
+    -webkit-font-smoothing: none
+    -webkit-transition: all 1s ease-in-out
+
+  &.foreground
+    width: 100%
+    height: 100%
+    top: 0px
+    &:after
+      display: none
+
+    #map-canvas
+      width: 100%
+      height: 100%
+      -webkit-transform: rotate3d(60, 0, 0, 0deg) !important
+
+html
+
+  &.map-active #question-container
+    display: none
+
+  &.action-button-visible
+    #question-container
+      width: 635px
+
+      #question-content
+        left: 0px

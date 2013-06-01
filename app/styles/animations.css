@@ -1,0 +1,11 @@
+@-webkit-keyframes mapUp {
+  0% { opacity: 0; -webkit-transform: translateY(20px);}
+  100% { opacity: 1; -webkit-transform: translateY(0);}
+}
+
+@-webkit-keyframes pinDown {
+  0%,20%,50%,80%,100%{-webkit-transform:translateY(0)}
+  0% { opacity: 0; -webkit-transform: translateY(-200px);}
+  40% { opacity: 1; -webkit-transform: translateY(-30px);}
+  60% { opacity: 1; -webkit-transform: translateY(-15px);}
+}
