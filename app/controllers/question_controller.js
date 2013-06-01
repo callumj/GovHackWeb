@@ -42,9 +42,14 @@ define([
     }
 
     var nextClickEvent = function(event) {
+      var sender    = $(event.currentTarget);
       var container = $(event.currentTarget).parents("#question-content");
-      var value     = $(container).find("[name=response]").val();
       var key       = $(container).find("[name=key]").val();
+      var value     = null;
+      if (QuestionController.activeView.isBool())
+        value = sender.hasClass("true");
+      else
+        value = $(container).find("[name=response]").val();
       QuestionController.activeQuestionnaire.respondToQuestion(key, value);
       RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
       nextQuestion();
@@ -67,7 +72,7 @@ define([
     QuestionController.firstBoot();
     window.setTimeout(function() {
       QuestionController.nextQuestion();
-    }, 10);
+    }, 100);
   });
 
   window.QuestionController = QuestionController;
