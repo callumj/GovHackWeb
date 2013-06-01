@@ -45,6 +45,7 @@ define([
     }
 
     var showActionButton = function() {
+      $("html").addClass("action-button-visible");
       $("#question-controller").removeClass("hidden");
     }
 
