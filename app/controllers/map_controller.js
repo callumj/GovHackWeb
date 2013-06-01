@@ -46,9 +46,10 @@ define([
     var locationReady = function(suburb) {
       MapController.locationsLoaded += 1;
       if (MapController.locationsLoaded == MapController.activeSuburbs.length) {
-        centerMap();
         animateMapIn();
-        setTimeout(drawMarkers, 1300);
+        setTimeout(resizeMap, 1000)
+        setTimeout(centerMap, 1000);
+        setTimeout(drawMarkers, 2300);
       }
     }
 
@@ -56,7 +57,7 @@ define([
       google.maps.event.trigger(Map.loadedMap(), 'resize');
       _.each(MapController.activeSuburbs, function(suburb) {
         suburb.drawMarker();
-      })
+      });
     }
 
     var centerMap = function() {
@@ -66,6 +67,10 @@ define([
       });
       Map.loadedMap().setCenter(boundObject.getCenter());
       Map.loadedMap().fitBounds(boundObject);
+    }
+
+    var resizeMap = function() {
+      google.maps.event.trigger(Map.loadedMap(), 'resize');
     }
 
     var animateMarkers = function() {
