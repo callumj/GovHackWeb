@@ -1,8 +1,8 @@
 <label>{{text}}</label>
 <input type="hidden" name="key" value="{{key}}" />
 {{#if isBool}}
-  <input class="next true"  type="button" value="Yes" />
-  <input class="next false" type="button" value="No" />
+  <input class="next true {{hideable true}}"  type="button" value="Yes" />
+  <input class="next false {{hideable false}}" type="button" value="No" />
 {{/if}}
 {{#if isString}}
   <input type="text" name="response" />

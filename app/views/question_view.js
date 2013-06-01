@@ -21,20 +21,22 @@ define([
         key:      this.model.key,
         isBool:   this.isBool(),
         isString: this.isString(),
-        text:     this.model.q
+        text:     this.model.q,
+        val:      this.set_value
       };
 
       return response;
     },
 
     beforeRender: function() {
-      this.el.unbind();
+      if (this.el)
+        $(this.el).unbind();
     },
 
     afterRender: function() {
       // attach events
       var context = this;
-      this.el.on("click", ".next", function(event) {
+      $(this.el).on("click", ".next", function(event) {
         context.handleNextClick(context, event);
       });
     },

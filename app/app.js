@@ -33,6 +33,12 @@ define([
     }
   });
 
+  Handlebars.registerHelper('hideable', function(value) {
+    if (this.val === value) {
+      return "hidden";
+    }
+  });
+
   // Mix Backbone.Events, modules, and layout management into the app object.
   return _.extend(app, {
     // Create a custom object with a nested Views object.

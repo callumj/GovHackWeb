@@ -5,8 +5,9 @@ define([
   'models/questionnaire',
   'views/question_view',
   'controllers/request_controller',
-  'controllers/map_controller'
-], function($, _, Questionnaire, QuestionView, RequestController, MapController) {
+  'controllers/map_controller',
+  'controllers/question_history_controller'
+], function($, _, Questionnaire, QuestionView, RequestController, MapController, QuestionHistoryController) {
   var QuestionController = (function () {
 
     var firstBoot = function() {
@@ -57,6 +58,7 @@ define([
 
     var dataReturnedEvent = function(data) {
       MapController.drawData(data);
+      QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
     }
 
     return {
