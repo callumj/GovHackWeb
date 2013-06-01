@@ -19,6 +19,8 @@ h2
   text-align: center
   font-weight: normal
 
+
+
 header
   width: 100%
   height: 530px
@@ -30,7 +32,7 @@ header
     height: 160px
     margin: 0 auto
     margin-top: 40px
-    margin-bottom: 60px
+    margin-bottom: 50px
     position: relative
 
     .map-pin
@@ -45,8 +47,8 @@ header
       left: 0
       right: 0
       margin: 0 auto
-      @include animation-delay(5s)
-      @include animation(pinDown 1s ease-in-out)
+      @include animation-delay(1s)
+      @include animation(pinDown 2s ease-in-out)
 
 
     .map
@@ -60,7 +62,16 @@ header
       left: 0
       right: 0
       margin: 0 auto
-      @include animation(mapUp 0.5s ease-in-out)
+      @include animation(mapUp 1s ease-in-out)
+
+    h1
+      text-align: center
+      color: #fff
+      position: absolute
+      bottom: 0px
+      left: 0px
+      right: 0px
+      margin: 0 auto
 
   #question-container
     width: 545px
@@ -70,6 +81,14 @@ header
     position: relative
     background: url('../images/question-content-shadow.png') no-repeat center bottom
     -webkit-transition: all 0.5s ease-in-out
+    @include animation(scaleFadeIn 1s ease-in-out)
+
+
+    .tag-lines
+      height: 50px
+      padding: 0px 20px
+      overflow: hidden
+      width: 100%
 
     #question-content
       width: 470px
@@ -104,12 +123,37 @@ header
           &:active
             font-size: 12px
 
+
+        input[value="Yes"]
+          background-image: url('../images/sprites.svg')
+          background-position: -56px -15px
+          width: 28px
+          height: 24px
+          text-indent: -1000px
+          -webkit-transition: background-position 0.2s ease-in-out
+
+          &:hover
+            background-position: -56px -58px
+
+        input[value="No"]
+          background-image: url('../images/sprites.svg')
+          background-position: -14px -15px
+          width: 22px
+          height: 24px
+          text-indent: -1000px
+          -webkit-transition: background-position 0.2s ease-in-out
+
+          &:hover
+            background-position: -14px -58px
+
+
+
     #question-controller
       width: 150px
       height: 80px
-      line-height: 80px
+      line-height: 78px
       color: #fff
-      right: 0px
+      right: 20px
       position: absolute
       -webkit-transition: all 0.5s ease-in-out
 
@@ -129,17 +173,13 @@ header
         display: block !important
 
 
-
-
-
-
 #map-container
   width: 800px
   height: 450px
   margin: 0 auto
   @include perspective(1000)
   position: absolute
-  top: 300px
+  top: 280px
   right: 0px
   left: 0px
   text-align: center
@@ -184,10 +224,10 @@ html
 
   &.action-button-visible
     #question-container
-      width: 635px
+      width: 670px
 
       #question-content
-        left: 0px
+        left: 20px
 
 
 #gmnoprint, .gmnoprint

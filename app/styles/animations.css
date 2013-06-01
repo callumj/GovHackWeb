@@ -1,6 +1,11 @@
 @-webkit-keyframes mapUp {
-  0% { opacity: 0; -webkit-transform: translateY(20px);}
+  0% { opacity: 0; -webkit-transform: translateY(00px);}
   100% { opacity: 1; -webkit-transform: translateY(0);}
+}
+
+@-webkit-keyframes scaleFadeIn {
+  0% { opacity: 0; -webkit-transform: translateY(100px);-webkit-transform: scale(1.5);}
+  100% { opacity: 1; -webkit-transform: translateY(0);-webkit-transform: scale(1);}
 }
 
 @-webkit-keyframes pinDown {

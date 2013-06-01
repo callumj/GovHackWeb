@@ -27,7 +27,7 @@ header {
     height: 160px;
     margin: 0 auto;
     margin-top: 40px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     position: relative; }
     header .logo-container .map-pin {
       background: url("../images/logo-pin.svg") no-repeat center bottom;
@@ -41,12 +41,12 @@ header {
       left: 0;
       right: 0;
       margin: 0 auto;
-      -webkit-animation-delay: 5s;
-      -moz-animation-delay: 5s;
-      animation-delay: 5s;
-      -webkit-animation: pinDown 1s ease-in-out;
-      -moz-animation: pinDown 1s ease-in-out;
-      animation: pinDown 1s ease-in-out; }
+      -webkit-animation-delay: 1s;
+      -moz-animation-delay: 1s;
+      animation-delay: 1s;
+      -webkit-animation: pinDown 2s ease-in-out;
+      -moz-animation: pinDown 2s ease-in-out;
+      animation: pinDown 2s ease-in-out; }
     header .logo-container .map {
       background: url("../images/logo-bottom.svg") no-repeat center bottom;
       background-size: cover;
@@ -58,9 +58,17 @@ header {
       left: 0;
       right: 0;
       margin: 0 auto;
-      -webkit-animation: mapUp 0.5s ease-in-out;
-      -moz-animation: mapUp 0.5s ease-in-out;
-      animation: mapUp 0.5s ease-in-out; }
+      -webkit-animation: mapUp 1s ease-in-out;
+      -moz-animation: mapUp 1s ease-in-out;
+      animation: mapUp 1s ease-in-out; }
+    header .logo-container h1 {
+      text-align: center;
+      color: white;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      margin: 0 auto; }
   header #question-container {
     width: 545px;
     height: 294px;
@@ -68,7 +76,15 @@ header {
     z-index: 200;
     position: relative;
     background: url("../images/question-content-shadow.png") no-repeat center bottom;
-    -webkit-transition: all 0.5s ease-in-out; }
+    -webkit-transition: all 0.5s ease-in-out;
+    -webkit-animation: scaleFadeIn 1s ease-in-out;
+    -moz-animation: scaleFadeIn 1s ease-in-out;
+    animation: scaleFadeIn 1s ease-in-out; }
+    header #question-container .tag-lines {
+      height: 50px;
+      padding: 0px 20px;
+      overflow: hidden;
+      width: 100%; }
     header #question-container #question-content {
       width: 470px;
       height: 80px;
@@ -97,12 +113,30 @@ header {
             text-decoration: underline; }
           header #question-container #question-content .buttons input[type="button"]:active {
             font-size: 12px; }
+        header #question-container #question-content .buttons input[value="Yes"] {
+          background-image: url("../images/sprites.svg");
+          background-position: -56px -15px;
+          width: 28px;
+          height: 24px;
+          text-indent: -1000px;
+          -webkit-transition: background-position 0.2s ease-in-out; }
+          header #question-container #question-content .buttons input[value="Yes"]:hover {
+            background-position: -56px -58px; }
+        header #question-container #question-content .buttons input[value="No"] {
+          background-image: url("../images/sprites.svg");
+          background-position: -14px -15px;
+          width: 22px;
+          height: 24px;
+          text-indent: -1000px;
+          -webkit-transition: background-position 0.2s ease-in-out; }
+          header #question-container #question-content .buttons input[value="No"]:hover {
+            background-position: -14px -58px; }
     header #question-container #question-controller {
       width: 150px;
       height: 80px;
-      line-height: 80px;
+      line-height: 78px;
       color: white;
-      right: 0px;
+      right: 20px;
       position: absolute;
       -webkit-transition: all 0.5s ease-in-out; }
       header #question-container #question-controller input[type="submit"] {
@@ -126,7 +160,7 @@ header {
   -moz-perspective: 1000;
   perspective: 1000;
   position: absolute;
-  top: 300px;
+  top: 280px;
   right: 0px;
   left: 0px;
   text-align: center;
@@ -174,9 +208,9 @@ header {
 html.map-active #question-container {
   display: none; }
 html.action-button-visible #question-container {
-  width: 635px; }
+  width: 670px; }
   html.action-button-visible #question-container #question-content {
-    left: 0px; }
+    left: 20px; }
 
 #gmnoprint, .gmnoprint {
   display: none !important; }
