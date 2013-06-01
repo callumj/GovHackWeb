@@ -4,3 +4,38 @@
 @import "../../vendor/h5bp/css/main.css";
 
 /*-- Application stylesheets. -----------------------------------------------*/
+
+
+
+#map-container {
+  width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  -webkit-perspective: 800;
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  left: 0px;
+}
+
+.map {
+
+
+}
+
+
+#map-canvas{
+  -webkit-transform: rotatex(45deg) !important;
+  -webkit-transform-origin: 50% 50%;
+  background: #333;
+  width: 1000px;
+  height: 500px;
+
+  -webkit-transition: all 1s ease-in-out;
+}
+
+
+#map-canvas.foreground {
+  -webkit-transform: rotate3d(0, 0, 0, 45deg) !important;
+
+}
