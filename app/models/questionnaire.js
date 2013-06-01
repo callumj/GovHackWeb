@@ -51,7 +51,7 @@ define([
     },
 
     percentageComplete: function() {
-      return ((this.attributes.answeredKeys.length / QUESTIONNAIRES.length) * 100.0) - 100;
+      return ((this.attributes.answeredKeys.length / QUESTIONNAIRES.length) * 100.0);
     }
 
   });

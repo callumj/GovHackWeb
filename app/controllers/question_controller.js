@@ -50,7 +50,7 @@ define([
     }
 
     var updateActionButtonProgress = function() {
-      $("#question-controller .action-button").attr("style", "background-position: " + QuestionController.activeQuestionnaire.percentageComplete() + "%");
+      $("#question-controller .action-button").attr("style", "background-size:" + QuestionController.activeQuestionnaire.percentageComplete() + "% 100%");
     }
 
     var showMapData = function() {
