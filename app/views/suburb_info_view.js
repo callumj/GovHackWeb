@@ -10,14 +10,14 @@ define([
 
     serialize: function() {
       var response = {
-        suburbName:         this.model.suburb_name,
-        postCode:           this.model.post_code,
-        suburbInfo:         this.model.suburb_info,
-        avgCostPurchase:    this.model.avg_cost_purchase,
-        avgCostRent:        this.model.avg_cost_rent,
-        cbdDistance:        this.model.cbd_distance,
-        airportDistance:    this.model.airport_distance,
-        coastlineDistance:  this.model.costline_distance
+        suburbName:         this.model.Name,
+        postCode:           this.model.PostCodes[0],
+        suburbInfo:         "",
+        avgCostPurchase:    this.model.Price,
+        avgCostRent:        0,
+        cbdDistance:        this.model.DistanceToCityText,
+        airportDistance:    0,
+        coastlineDistance:  0
       };
 
       return response;

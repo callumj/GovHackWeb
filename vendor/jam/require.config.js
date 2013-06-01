@@ -34,6 +34,11 @@ var jam = {
             "name": "infobox",
             "location": "../vendor/jam/infobox",
             "main": "./infobox.js"
+        },
+        {
+            "name": "wicket",
+            "location": "../vendor/jam/wicket",
+            "main": "./wicket.js"
         }
     ],
     "version": "0.2.11",
@@ -64,6 +69,9 @@ var jam = {
         },
         "infobox": {
             "exports": "Infobox"
+        },
+        "wicket": {
+            "exports": "Wkt"
         }
     }
 };
