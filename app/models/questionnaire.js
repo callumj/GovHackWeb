@@ -44,6 +44,10 @@ define([
     respondToQuestion: function(key, value) {
       this.attributes["answeredKeys"].push(key);
       this.attributes["answered"][key] = value;
+    },
+
+    reachedMinimumSufficientData: function() {
+      return this.attributes.answeredKeys.length >= 3;
     }
 
   });

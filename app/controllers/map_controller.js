@@ -11,17 +11,21 @@ define([
       Map.loadedMap();
     }
 
-    var drawData = function(data_set) {
+    var setData = function(data_set) {
+      MapController.dataSet = data_set;
+    }
+
+    var drawData = function() {
       MapController.drawnMarkers = 0;
       _.each(MapController.activeSuburbs, function(suburb) {
         suburb.removeMarker();
       });
 
-      fetchLocationData(data_set);
+      fetchLocationData()
     }
 
-    var fetchLocationData = function(data_set) {
-      _.each(data_set, function(data) {
+    var fetchLocationData = function() {
+      _.each(MapController.dataSet, function(data) {
         var suburb = new Suburb(data);
         MapController.activeSuburbs.push(suburb);
         suburb.populateLocation(MapController.locationReady);
@@ -79,6 +83,7 @@ define([
     }
 
     return {
+      setData:            setData,
       drawData:           drawData,
       initMap:            initMap,
       locationReady:      locationReady,
@@ -89,7 +94,8 @@ define([
       mapInView:          false,
       activeSuburbs:      [],
       drawnMarkers:       0,
-      locationsLoaded:    0
+      locationsLoaded:    0,
+      dataSet:            []
     }
 
   })();
