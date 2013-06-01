@@ -34,8 +34,15 @@ define([
   });
 
   Handlebars.registerHelper('hideable', function(value) {
-    if (this.val === value) {
-      return "hidden";
+    if (this.val) {
+      debugger;
+      if (this.type == "multi") {
+        debugger
+      }
+
+      if (this.val === value) {
+        return "hidden";
+      }
     }
   });
 

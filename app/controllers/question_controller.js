@@ -42,16 +42,8 @@ define([
         nextClickEvent(event);
     }
 
-    var nextClickEvent = function(event) {
-      var sender    = $(event.currentTarget);
-      var container = $(event.currentTarget).parents("#question-content");
-      var key       = $(container).find("[name=key]").val();
-      var value     = null;
-      if (QuestionController.activeView.isBool())
-        value = sender.hasClass("true");
-      else
-        value = $(container).find("[name=response]").val();
-      QuestionController.activeQuestionnaire.respondToQuestion(key, value);
+    var nextClickEvent = function(changedView) {
+      QuestionController.activeQuestionnaire.respondToQuestion(changedView.model.key, changedView.received_value);
       RequestController.sendResponse(QuestionController.activeQuestionnaire, QuestionController.dataReturnedEvent);
       nextQuestion();
     }

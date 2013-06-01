@@ -70,7 +70,9 @@ define([
         value = $(container).find("[name=response]").val();
       }
 
-      context.sendEvent("nextClick", event);
+      this.received_value = value;
+
+      context.sendEvent("nextClick", this);
     },
 
     sendEvent: function(type, event) {

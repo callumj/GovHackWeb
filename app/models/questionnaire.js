@@ -8,7 +8,7 @@ define([
     {q: "Do you want to live near work?", key: "near_work", type: "boolean"},
     {q: "Do you like to entertain?",      key: "entertain", type: "boolean"},
     {q: "Do you YOLO hard?",              key: "yolo",      type: "boolean"},
-    {q: "Do you have swag?",              key: "swag",      type: "boolean"}/*,
+    {q: "Do you have swag?",              key: "swag",      type: "boolean"},
     {
       q: "What is your age?",
       key: "age",
@@ -19,7 +19,7 @@ define([
         {key: "36-45", s: "36 - 45"},
         {key: "46",    s: "46+"}
       ]
-    }*/
+    }
   ];
 
   var Questionnaire = Backbone.Model.extend({

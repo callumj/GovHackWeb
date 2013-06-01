@@ -1,9 +1,10 @@
 // Filename: models/project
 define([
+  'jquery',
   'underscore',
   'models/map',
   'models/suburb'
-], function(_, Map, Suburb) {
+], function($, _, Map, Suburb) {
   var MapController = (function () {
 
     var initMap = function() {
@@ -20,7 +21,15 @@ define([
         MapController.activeSuburbs.push(suburb);
         suburb.drawMarker(MapController.markerDrawn);
       });
-      Map.loadedMap().getDiv().classList.add("foreground");
+
+      animateMapIn();
+    }
+
+    var animateMapIn = function() {
+      var map_div = $( Map.loadedMap().getDiv());
+      map_div.addClass("foreground");
+      map_div.parents("#map-container").addClass("foreground");
+      $("html").addClass("map-active");
     }
 
     var markerDrawn = function(suburb) {
