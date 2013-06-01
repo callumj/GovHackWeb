@@ -47,6 +47,10 @@ define([
     var showActionButton = function() {
       $("html").addClass("action-button-visible");
       $("#question-controller").removeClass("hidden");
+
+      $("#question-container .start").fadeOut(function() {
+         $("#question-container .ready").fadeIn();
+      });
     }
 
     var updateActionButtonProgress = function() {
@@ -105,7 +109,7 @@ define([
       remoteEventHandler: remoteEventHandler,
       historyUpdated:     historyUpdated,
       handleActionButton: handleActionButton,
-      mapViewable:        false,
+      mapViewable:        false
     }
 
   })();

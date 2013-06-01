@@ -3,8 +3,9 @@ define([
   'jquery',
   'underscore',
   'models/map',
-  'models/suburb'
-], function($, _, Map, Suburb) {
+  'models/suburb',
+  'controllers/suburb_info_controller'
+], function($, _, Map, Suburb, SuburbInfoController) {
   var MapController = (function () {
 
     var initMap = function() {
@@ -28,6 +29,7 @@ define([
       _.each(MapController.dataSet, function(data) {
         var suburb = new Suburb(data);
         MapController.activeSuburbs.push(suburb);
+        suburb.markerClickEvent = MapController.markerClickedEvent
         suburb.populateLocation(MapController.locationReady);
       });
     }
@@ -87,6 +89,15 @@ define([
       });
     }
 
+    var markerClickedEvent = function(model, event) {
+      if (MapController.activeSuburb == null || MapController.activeSuburb != model) {
+        SuburbInfoController.showSuburbInfo(model);
+      } else if (MapController.activeSuburb == model) {
+        SuburbInfoController.hideSuburbInfo();
+        MapController.activeSuburb = null;
+      }
+    }
+
     return {
       setData:            setData,
       drawData:           drawData,
@@ -96,6 +107,8 @@ define([
       centerMap:          centerMap,
       animateMarkers:     animateMarkers,
       dropAnimateMarkers: dropAnimateMarkers,
+      markerClickedEvent: markerClickedEvent,
+      activeSuburb:       false,
       mapInView:          false,
       activeSuburbs:      [],
       drawnMarkers:       0,

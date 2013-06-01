@@ -1,12 +1,22 @@
 // Filename: models/project
 define([
+  'jquery',
   'underscore'
-], function(_) {
+], function($, _) {
   var RequestController = (function () {
 
+    var recommendationsFromServer = function(model, callback) {
+      $.ajax({
+        dataType: "json",
+        url: "http://placeme.azurewebsites.net/suburb/recommendation",
+        data: model.attributes,
+        callback: callback
+      })
+    }
+
     var sendResponse = function(model, callback) {
+      //recommendationsFromServer(model, callback);
       fakeSendResponse(model, callback);
-      // usually JSON would go here
     }
 
     var fakeSendResponse = function(model, callback) {
@@ -14,16 +24,37 @@ define([
       if (responses.near_work && responses.entertain && responses.yolo) {
         var fake_data = [
           {
-            suburb_name: "City Beach",
-            percent:     93,
+            suburb_name:        "City Beach",
+            percent:            93,
+            post_code:          6015,
+            suburb_info:        "An info",
+            avg_cost_purchase:  500000,
+            avg_cost_rent:      500,
+            cbd_distance:       10.1,
+            airport_distance:   9.2,
+            costline_distance:  4.3
           },
           {
             suburb_name: "Claremont",
-            percent:     99
+            percent:     99,
+            post_code:   6010,
+            suburb_info: "An info",
+            avg_cost_purchase:  500000,
+            avg_cost_rent:      500,
+            cbd_distance:       10.1,
+            airport_distance:   9.2,
+            costline_distance:  4.3
           },
           {
             suburb_name: "Subiaco",
-            percent: 80
+            percent: 80,
+            post_code:   6000,
+            suburb_info: "An info",
+            avg_cost_purchase:  500000,
+            avg_cost_rent:      500,
+            cbd_distance:       10.1,
+            airport_distance:   9.2,
+            costline_distance:  4.3
           }
         ]
 

@@ -46,6 +46,7 @@ define([
         return this.attributes["info_window"];
 
       var boxText = document.createElement("div");
+      boxText.style.cssText = "background: white";
       var content_string = "<div class=\"info_box\">";
       content_string += "<div class=\"title\"><h2>" + this.attributes.suburb_name + "</h2></div>";
       content_string += "<div class=\"percent\">" + this.attributes.percent + "%</div>";
@@ -83,6 +84,9 @@ define([
       });
       google.maps.event.addListener(marker, 'mouseout', function() {
         context.buildInfoWindow().close(Map.loadedMap(), marker);
+      });
+      google.maps.event.addListener(marker, 'click', function(event) {
+        context.markerClickEvent(context, event)
       });
     }
 
