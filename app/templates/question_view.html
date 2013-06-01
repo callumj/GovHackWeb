@@ -10,6 +10,6 @@
 {{/if}}
 {{#if isMulti}}
   {{#each multiValues}}
-    <input class="next true {{hideable true}}"  type="button" value="{{s}}" data-val="{{key}}" />
+    <input class="next true {{hideable this.key ../this}}"  type="button" value="{{s}}" data-val="{{key}}" />
   {{/each}}
 {{/if}}
