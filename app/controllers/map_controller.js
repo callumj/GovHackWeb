@@ -20,6 +20,7 @@ define([
         MapController.activeSuburbs.push(suburb);
         suburb.drawMarker(MapController.markerDrawn);
       });
+      Map.loadedMap().getDiv().classList.add("foreground");
     }
 
     var markerDrawn = function(suburb) {
@@ -35,12 +36,11 @@ define([
       });
       Map.loadedMap().setCenter(boundObject.getCenter());
       Map.loadedMap().fitBounds(boundObject);
-      animateMarkers();
     }
 
     var animateMarkers = function() {
       _.each(MapController.activeSuburbs, function(suburb) {
-        suburb.attributes.marker.setAnimation(google.maps.Animation.BOUNCE);
+        suburb.attributes.marker.setAnimation(google.maps.Animation.DROP);
       });
 
       setTimeout(MapController.dropAnimateMarkers, 3000);

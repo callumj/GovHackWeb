@@ -8,3 +8,8 @@
   <input type="text" name="response" />
   <input class="next" type="submit" value="Next" />
 {{/if}}
+{{#if isMulti}}
+  {{#each multiValues}}
+    <input class="next true {{hideable true}}"  type="button" value="{{s}}" data-val="{{key}}" />
+  {{/each}}
+{{/if}}
