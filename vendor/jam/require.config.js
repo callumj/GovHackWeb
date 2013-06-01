@@ -29,6 +29,11 @@ var jam = {
             "name": "handlebars",
             "location": "../vendor/jam/handlebars",
             "main": "./handlebars.js"
+        },
+        {
+            "name": "infobox",
+            "location": "../vendor/jam/infobox",
+            "main": "./infobox.js"
         }
     ],
     "version": "0.2.11",
@@ -56,6 +61,9 @@ var jam = {
         },
         "underscore": {
             "exports": "_"
+        },
+        "infobox": {
+            "exports": "Infobox"
         }
     }
 };
