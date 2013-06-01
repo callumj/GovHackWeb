@@ -51,8 +51,15 @@ define([
         animateMapIn();
         setTimeout(resizeMap, 1000)
         setTimeout(centerMap, 1000);
-        setTimeout(drawMarkers, 2300);
+        setTimeout(drawPolygons, 2300);
       }
+    }
+
+    var drawPolygons = function() {
+      google.maps.event.trigger(Map.loadedMap(), 'resize');
+      _.each(MapController.activeSuburbs, function(suburb) {
+        suburb.drawPolygons();
+      });
     }
 
     var drawMarkers = function() {

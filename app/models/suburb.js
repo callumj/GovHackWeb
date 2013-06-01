@@ -4,8 +4,9 @@ define([
   'underscore',
   'backbone',
   'models/map',
-  'infobox'
-], function($, unds, Backbone, Map, Infobox) {
+  'infobox',
+  'wicket'
+], function($, _, Backbone, Map, Infobox, Wicket) {
   var Suburb = Backbone.Model.extend({
 
     initialize: function() {
@@ -18,7 +19,7 @@ define([
     },
 
     address: function() {
-      return this.attributes.suburb_name + ", WA";
+      return this.attributes.Name + ", " + this.attributes.State;
     },
 
     streetViewImage: function() {
@@ -41,6 +42,16 @@ define([
       });
     },
 
+    polygonArray: function() {
+      var arry = [];
+      var wkt    = new Wicket.Wkt();
+      var parsed = wkt.read(this.attributes.Geometry.Geometry.WellKnownText);
+      _.each(parsed[0], function(coord) {
+        arry.push(new google.maps.LatLng(coord.y, coord.x));
+      });
+      return arry;
+    },
+
     buildInfoWindow: function() {
       if (this.attributes["info_window"])
         return this.attributes["info_window"];
@@ -48,7 +59,7 @@ define([
       var boxText = document.createElement("div");
       boxText.style.cssText = "background: white";
       var content_string = "<div class=\"info_box\">";
-      content_string += "<div class=\"title\"><h2>" + this.attributes.suburb_name + "</h2></div>";
+      content_string += "<div class=\"title\"><h2>" + this.attributes.Name + "</h2></div>";
       content_string += "<div class=\"percent\">" + this.attributes.percent + "%</div>";
       content_string += "<div class=\"street-view\"><img src=\"" + this.streetViewImage() + "\" width=\"400\" height=\"100\" /></div>";
       content_string += "</div>"
@@ -66,6 +77,33 @@ define([
 
       this.attributes["info_window"] = info_window;
       return this.attributes["info_window"];
+    },
+
+    drawPolygons: function() {
+      var set = this.polygonArray();
+      var polygon = new google.maps.Polygon({
+        paths: set,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
+      });
+
+      polygon.setMap(Map.loadedMap());
+
+      this.attributes["polygon"] = polygon;
+
+      var context = this;
+      google.maps.event.addListener(polygon, 'mouseover', function() {
+        context.buildInfoWindow().open(Map.loadedMap(), polygon);
+      });
+      google.maps.event.addListener(polygon, 'mouseout', function() {
+        context.buildInfoWindow().close(Map.loadedMap(), polygon);
+      });
+      google.maps.event.addListener(polygon, 'click', function(event) {
+        context.markerClickEvent(context, event)
+      });
     },
 
     drawMarker: function() {

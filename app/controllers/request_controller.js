@@ -10,13 +10,13 @@ define([
         dataType: "json",
         url: "http://placeme.azurewebsites.net/suburb/recommendation",
         data: model.attributes,
-        callback: callback
+        success: callback
       })
     }
 
     var sendResponse = function(model, callback) {
-      //recommendationsFromServer(model, callback);
-      fakeSendResponse(model, callback);
+      recommendationsFromServer(model, callback);
+      //fakeSendResponse(model, callback);
     }
 
     var fakeSendResponse = function(model, callback) {
