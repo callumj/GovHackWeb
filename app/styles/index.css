@@ -62,11 +62,11 @@ header {
       animation: mapUp 0.5s ease-in-out; }
   header #question-container {
     width: 545px;
-    height: 275px;
+    height: 294px;
     margin: 0 auto;
     z-index: 200;
     position: relative;
-    background: url("../images/question-content-shadow.png") no-repeat left bottom;
+    background: url("../images/question-content-shadow.png") no-repeat center bottom;
     -webkit-transition: all 0.5s ease-in-out; }
     header #question-container #question-content {
       width: 470px;
@@ -109,7 +109,9 @@ header {
         height: 80px;
         background: #49ba6f;
         border: 0px;
-        padding: 0px 20px; }
+        padding: 0px 20px;
+        color: white;
+        font-family: "CoreSansN45Regular"; }
       header #question-container #question-controller.hidden {
         right: 35px;
         display: block !important; }
@@ -131,19 +133,19 @@ header {
   transition: all 1s ease-in-out; }
   #map-container:after {
     content: "\00a0";
-    width: 994px;
+    width: 1004px;
     height: 10px;
     background: #d3ccb7;
     position: absolute;
-    left: -97px;
+    left: -103px;
     right: 0px;
-    margin-top: -85px; }
+    margin-top: -106px; }
   #map-container #map-canvas {
-    -webkit-transform: rotate3d(60, 0, 0, 60deg) !important;
-    -moz-transform: rotate3d(60, 0, 0, 60deg) !important;
-    -ms-transform: rotate3d(60, 0, 0, 60deg) !important;
-    -o-transform: rotate3d(60, 0, 0, 60deg) !important;
-    transform: rotate3d(60, 0, 0, 60deg) !important;
+    -webkit-transform: rotate3d(60, 0, 0, 65deg) !important;
+    -moz-transform: rotate3d(60, 0, 0, 65deg) !important;
+    -ms-transform: rotate3d(60, 0, 0, 65deg) !important;
+    -o-transform: rotate3d(60, 0, 0, 65deg) !important;
+    transform: rotate3d(60, 0, 0, 65deg) !important;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
@@ -173,3 +175,6 @@ html.action-button-visible #question-container {
   width: 635px; }
   html.action-button-visible #question-container #question-content {
     left: 0px; }
+
+#gmnoprint, .gmnoprint {
+  display: none !important; }

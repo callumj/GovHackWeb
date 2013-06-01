@@ -62,14 +62,12 @@ header
 
   #question-container
     width: 545px
-    height: 275px
+    height: 294px
     margin: 0 auto
     z-index: 200
     position: relative
-    background: url('../images/question-content-shadow.png') no-repeat left bottom
+    background: url('../images/question-content-shadow.png') no-repeat center bottom
     -webkit-transition: all 0.5s ease-in-out
-
-
 
     #question-content
       width: 470px
@@ -118,6 +116,8 @@ header
         background: #49ba6f
         border: 0px
         padding: 0px 20px
+        color: #fff
+        font-family: 'CoreSansN45Regular'
 
 
       &.hidden
@@ -142,16 +142,16 @@ header
   @include transition (all 1.0s ease-in-out)
   &:after
     content: '\00a0'
-    width: 994px
+    width: 1004px
     height: 10px
     background: #d3ccb7
     position: absolute
-    left: -97px
+    left: -103px
     right: 0px
-    margin-top: -85px
+    margin-top: -106px
 
   #map-canvas
-    @include transform(rotate3d(60, 0, 0, 60deg) !important)
+    @include transform(rotate3d(60, 0, 0, 65deg) !important)
     @include transform-style(preserve-3d)
     background: #333
     -webkit-transform-origin: center center
@@ -184,3 +184,7 @@ html
 
       #question-content
         left: 0px
+
+
+#gmnoprint, .gmnoprint
+  display: none !important
