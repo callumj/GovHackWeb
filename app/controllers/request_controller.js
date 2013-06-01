@@ -1,12 +1,22 @@
 // Filename: models/project
 define([
+  'jquery',
   'underscore'
-], function(_) {
+], function($, _) {
   var RequestController = (function () {
 
+    var recommendationsFromServer = function(model, callback) {
+      $.ajax({
+        dataType: "json",
+        url: "http://placeme.azurewebsites.net/suburb/recommendation",
+        data: model.attributes,
+        callback: callback
+      })
+    }
+
     var sendResponse = function(model, callback) {
+      //recommendationsFromServer(model, callback);
       fakeSendResponse(model, callback);
-      // usually JSON would go here
     }
 
     var fakeSendResponse = function(model, callback) {
