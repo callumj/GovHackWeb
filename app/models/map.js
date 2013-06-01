@@ -25,10 +25,5 @@ define([
 
   })();
 
-  $(function() {
-    Map.loadedMap();
-  });
-
-  window.Map = Map;
   return Map
 });

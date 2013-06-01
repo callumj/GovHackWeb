@@ -5,8 +5,7 @@ require([
   // Main Router.
   "router",
 
-  "models/questionnaire",
-  "models/map"
+  "controllers/question_controller"
 ],
 
 function(app, Router) {

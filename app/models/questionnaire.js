@@ -5,7 +5,9 @@ define([
   'backbone'
 ], function($, unds, Backbone) {
   var QUESTIONNAIRES = [
-    {q: "Do you want to live near work?", key: "near_work", type: "boolean"}
+    {q: "Do you want to live near work?", key: "near_work", type: "boolean"},
+    {q: "Do you like to entertain?",      key: "entertain", type: "boolean"},
+    {q: "Do you YOLO hard?",              key: "yolo",      type: "boolean"}
   ];
 
   var Questionnaire = Backbone.Model.extend({
@@ -25,10 +27,14 @@ define([
         }
       });
       return return_val;
+    },
+
+    respondToQuestion: function(key, value) {
+      this.attributes["answeredKeys"].push(key);
+      this.attributes["answered"][key] = value;
     }
 
   });
 
-  window.Questionnaire = Questionnaire;
   return Questionnaire
 });

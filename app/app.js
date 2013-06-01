@@ -1,6 +1,7 @@
 define([
-  "backbone.layoutmanager"
-], function() {
+  "backbone.layoutmanager",
+  "handlebars"
+], function(layoutMan, Handlbars) {
 
   // Provide a global location to place configuration settings and module
   // creation.
@@ -20,21 +21,15 @@ define([
     prefix: "app/templates/",
 
     fetch: function(path) {
-      // Concatenate the file extension.
       path = path + ".html";
 
-      // If cached, use the compiled template.
-      if (JST[path]) {
-        return JST[path];
+      if(!JST[path]) {
+        $.ajax({ url: "/" + path, async: false }).then(function(contents) {
+          JST[path] = Handlebars.compile(contents);
+        });
       }
 
-      // Put fetch into `async-mode`.
-      var done = this.async();
-
-      // Seek out the template asynchronously.
-      $.get(app.root + path, function(contents) {
-        done(JST[path] = _.template(contents));
-      });
+      return JST[path];
     }
   });
 

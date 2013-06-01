@@ -1,0 +1,13 @@
+<label>{{text}}</label>
+<input type="hidden" name="key" value="{{key}}" />
+{{#if isBool}}
+  <select name="response">
+    <option value="true">Yes</option>
+    <option value="false"selected>No</option>
+  </select>
+{{/if}}
+{{#if isString}}
+  <input type="text" name="response" />
+{{/if}}
+
+<input class="next" type="submit" value="Next" />

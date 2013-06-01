@@ -24,6 +24,11 @@ var jam = {
             "name": "underscore",
             "location": "../vendor/jam/underscore",
             "main": "./underscore.js"
+        },
+        {
+            "name": "handlebars",
+            "location": "../vendor/jam/handlebars",
+            "main": "./handlebars.js"
         }
     ],
     "version": "0.2.11",
@@ -42,6 +47,15 @@ var jam = {
                 "lodash"
             ],
             "exports": "Backbone.LayoutManager"
+        },
+        "handlebars": {
+            "deps": [
+                "jquery"
+            ],
+            "exports": "Handlebars"
+        },
+        "underscore": {
+            "exports": "_"
         }
     }
 };
