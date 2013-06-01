@@ -22,8 +22,16 @@ define([
       return this.attributes.Name + ", " + this.attributes.State;
     },
 
+    centerLocation: function() {
+      var boundObject = new google.maps.LatLngBounds();
+      _.each(this.polygonArray(), function(coord) {
+        boundObject.extend(coord);
+      });
+      return boundObject.getCenter();
+    },
+
     streetViewImage: function() {
-      var lat_lng = this.attributes.location.lat() + "," + this.attributes.location.lng();
+      var lat_lng = this.centerLocation().lat() + "," + this.centerLocation().lng();
       return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + lat_lng +"&pitch=1&sensor=false"
     },
 
@@ -66,6 +74,8 @@ define([
       boxText.innerHTML = content_string;
 
       var info_window = new InfoBox({
+        pixelOffset:    new google.maps.Size(-(400 / 2), 0),
+        position:       this.centerLocation(),
         content:        boxText,
         closeBoxURL:    "http://www.google.com/intl/en_us/mapfiles/close.gif",
         closeBoxMargin: "10px 2px 2px 2px",
@@ -92,14 +102,20 @@ define([
 
       polygon.setMap(Map.loadedMap());
 
+      var marker = new google.maps.Marker({
+        position: this.centerLocation(),
+        map: Map.loadedMap(),
+        visible: false
+      });
+
       this.attributes["polygon"] = polygon;
 
       var context = this;
       google.maps.event.addListener(polygon, 'mouseover', function() {
-        context.buildInfoWindow().open(Map.loadedMap(), polygon);
+        context.buildInfoWindow().open(Map.loadedMap(), marker);
       });
       google.maps.event.addListener(polygon, 'mouseout', function() {
-        context.buildInfoWindow().close(Map.loadedMap(), polygon);
+        context.buildInfoWindow().close(Map.loadedMap(), marker);
       });
       google.maps.event.addListener(polygon, 'click', function(event) {
         context.markerClickEvent(context, event)

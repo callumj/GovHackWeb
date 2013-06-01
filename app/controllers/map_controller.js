@@ -22,16 +22,13 @@ define([
         suburb.removeMarker();
       });
 
-      fetchLocationData()
-    }
-
-    var fetchLocationData = function() {
-      _.each(MapController.dataSet, function(data) {
+     _.each(MapController.dataSet, function(data) {
         var suburb = new Suburb(data);
         MapController.activeSuburbs.push(suburb);
         suburb.markerClickEvent = MapController.markerClickedEvent
-        suburb.populateLocation(MapController.locationReady);
       });
+
+      locationReady();
     }
 
     var animateMapIn = function() {
@@ -47,12 +44,10 @@ define([
 
     var locationReady = function(suburb) {
       MapController.locationsLoaded += 1;
-      if (MapController.locationsLoaded == MapController.activeSuburbs.length) {
-        animateMapIn();
-        setTimeout(resizeMap, 1000)
-        setTimeout(centerMap, 1000);
-        setTimeout(drawPolygons, 2300);
-      }
+      animateMapIn();
+      setTimeout(resizeMap, 1000)
+      setTimeout(centerMap, 1000);
+      setTimeout(drawPolygons, 2300);
     }
 
     var drawPolygons = function() {
@@ -72,7 +67,7 @@ define([
     var centerMap = function() {
       var boundObject = new google.maps.LatLngBounds();
       _.each(MapController.activeSuburbs, function(suburb) {
-        boundObject.extend(suburb.attributes["location"]);
+        boundObject.extend(suburb.centerLocation());
       });
       Map.loadedMap().setCenter(boundObject.getCenter());
       Map.loadedMap().fitBounds(boundObject);
