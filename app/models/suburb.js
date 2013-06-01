@@ -11,6 +11,11 @@ define([
       this.set({});
     },
 
+    removeMarker: function() {
+      if (this.attributes.marker)
+        this.attributes.marker.setMap(null);
+    },
+
     address: function() {
       return this.attributes.suburb_name + ", WA";
     },

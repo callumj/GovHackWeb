@@ -17,7 +17,12 @@ define([
         suburb.removeMarker();
       });
 
-      animateMapIn();
+      if (!MapController.mapInView) {
+        animateMapIn();
+        MapController.mapInView = true;
+      }
+
+
       setTimeout(function() {
         renderMarkers(data_set);
       }, 200);
@@ -74,6 +79,7 @@ define([
       centerMap:          centerMap,
       animateMarkers:     animateMarkers,
       dropAnimateMarkers: dropAnimateMarkers,
+      mapInView:          false,
       activeSuburbs: [],
       drawnMarkers:  0
     }

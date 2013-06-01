@@ -37,10 +37,10 @@ define([
     var scope = this;
 
     // support receiving a relative context
-    if (context && context.val)
+    if (context && context.val != null)
       scope = context;
 
-    if (scope.val) {
+    if (scope.val != null) {
       if (scope.val === value) {
         return "hidden";
       }

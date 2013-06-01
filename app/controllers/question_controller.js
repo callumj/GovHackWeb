@@ -14,8 +14,10 @@ define([
       if (QuestionController.booted)
         return;
 
+      QuestionController.booted = true;
       QuestionController.activeQuestionnaire = new Questionnaire();
       MapController.initMap();
+      QuestionHistoryController.handleHistoryChange = QuestionController.eventHandler;
     }
 
     var nextQuestion = function() {
@@ -49,15 +51,18 @@ define([
     }
 
     var dataReturnedEvent = function(data) {
-      MapController.drawData(data);
-      QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
+      if (MapController.mapInView || data.length > 0) {
+        MapController.drawData(data);
+        QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
+      }
     }
 
     return {
       firstBoot:         firstBoot,
       nextQuestion:      nextQuestion,
       startViews:        startViews,
-      dataReturnedEvent: dataReturnedEvent
+      dataReturnedEvent: dataReturnedEvent,
+      eventHandler:      eventHandler
     }
 
   })();

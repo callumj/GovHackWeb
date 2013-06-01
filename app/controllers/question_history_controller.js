@@ -9,6 +9,7 @@ define([
     var target = "#question-history";
 
     var reflectHistory = function(model) {
+      $(target).empty();
       _.each(Object.keys(model.attributes["answered"]), function(key) {
         var matching_q = null;
         _.each(QUESTIONNAIRES, function(q_obj) {
@@ -22,12 +23,13 @@ define([
         placeholder.appendTo($(target));
         view.el = placeholder;
         view.render();
+        view.eventHandler = QuestionHistoryController.handleHistoryChange;
       });
     }
 
     return {
-      target:         target,
-      reflectHistory: reflectHistory,
+      target:              target,
+      reflectHistory:      reflectHistory,
       views:  []
     }
 
