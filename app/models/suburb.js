@@ -13,9 +13,11 @@ define([
       this.set({});
     },
 
-    removeMarker: function() {
+    removeFromMap: function() {
       if (this.attributes.marker)
         this.attributes.marker.setMap(null);
+      if (this.attributes.polygon)
+        this.attributes.polygon.setMap(null);
     },
 
     address: function() {

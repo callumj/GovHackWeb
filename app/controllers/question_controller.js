@@ -22,6 +22,14 @@ define([
       QuestionHistoryController.handleHistoryChange = QuestionController.historyUpdated;
     }
 
+    var reset = function() {
+      hideActionButton();
+      MapController.animateMapOut();
+      QuestionController.activeQuestionnaire = new Questionnaire();
+      QuestionController.mapViewable = false;
+      nextQuestion();
+    }
+
     var nextQuestion = function() {
       startViews();
       QuestionController.activeQuestion = QuestionController.activeQuestionnaire.nextQuestion();
@@ -53,6 +61,15 @@ define([
       });
     }
 
+    var hideActionButton = function() {
+      $("html").removeClass("action-button-visible");
+      $("#question-controller").addClass("hidden");
+
+      $("#question-container .ready").fadeOut(function() {
+         $("#question-container .start").fadeIn();
+      });
+    }
+
     var updateActionButtonProgress = function() {
       $("#question-controller .action-button").attr("style", "background-size:" + QuestionController.activeQuestionnaire.percentageComplete() + "% 100%");
     }
@@ -60,7 +77,7 @@ define([
     var showMapData = function() {
       MapController.drawData();
       QuestionHistoryController.reflectHistory(QuestionController.activeQuestionnaire);
-      MapController.mapViewable = true;
+      QuestionController.mapViewable = true;
     }
 
     var attachEvents = function() {
@@ -90,7 +107,7 @@ define([
       if (!exhausted)
         nextQuestion();
 
-      if (exhausted|| MapController.mapViewable)
+      if (exhausted|| QuestionController.mapViewable)
         showMapData();
     }
 
@@ -112,6 +129,7 @@ define([
       remoteEventHandler: remoteEventHandler,
       historyUpdated:     historyUpdated,
       handleActionButton: handleActionButton,
+      reset:              reset,
       mapViewable:        false
     }
 

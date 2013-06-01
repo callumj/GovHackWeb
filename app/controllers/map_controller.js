@@ -16,11 +16,14 @@ define([
       MapController.dataSet = data_set;
     }
 
-    var drawData = function() {
-      MapController.drawnMarkers = 0;
+    var dropData = function() {
       _.each(MapController.activeSuburbs, function(suburb) {
-        suburb.removeMarker();
+        suburb.removeFromMap();
       });
+    }
+
+    var drawData = function() {
+      dropData();
 
      _.each(MapController.dataSet, function(data) {
         var suburb = new Suburb(data);
@@ -40,6 +43,15 @@ define([
       map_div.parents("#map-container").addClass("foreground");
       $("html").addClass("map-active");
       MapController.mapInView = true;
+    }
+
+    var animateMapOut = function() {
+      dropData();
+      var map_div = $( Map.loadedMap().getDiv());
+      map_div.removeClass("foreground");
+      map_div.parents("#map-container").removeClass("foreground");
+      $("html").removeClass("map-active");
+      MapController.mapInView = false;
     }
 
     var locationReady = function(suburb) {
@@ -110,10 +122,10 @@ define([
       animateMarkers:     animateMarkers,
       dropAnimateMarkers: dropAnimateMarkers,
       markerClickedEvent: markerClickedEvent,
+      animateMapOut:      animateMapOut,
       activeSuburb:       false,
       mapInView:          false,
       activeSuburbs:      [],
-      drawnMarkers:       0,
       locationsLoaded:    0,
       dataSet:            []
     }
