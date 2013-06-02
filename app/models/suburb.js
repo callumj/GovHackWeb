@@ -34,7 +34,7 @@ define([
 
     streetViewImage: function() {
       var lat_lng = this.centerLocation().lat() + "," + this.centerLocation().lng();
-      return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + lat_lng +"&pitch=1&sensor=false"
+      return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + this.address() +"&pitch=1&sensor=false"
     },
 
     populateLocation: function(location_callback) {
