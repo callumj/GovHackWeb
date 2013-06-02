@@ -86,6 +86,27 @@ define([
       if (this.attributes["info_window"])
         return this.attributes["info_window"];
 
+      var content_string = "<div class=\"suburb-info-box\">";
+      content_string += "<div class=\"image\"><img src=\"" + this.streetViewImage() + "\" width=\"365\" height=\"65\" /></div>";
+      content_string += "<div class=\"copy\">";
+      content_string += "<h1>" + this.displayName() + "<span>" + this.percentage() + "<small>%</small><span></h1>";
+      content_string += "<h3>" + this.postCode() + "<span>" + this.attributes.Suburb.DistanceToCityText + " to the CBD.</span></h3>";
+      content_string += "</div>";
+      content_string += "</div>";
+
+      var info_window = new google.maps.InfoWindow({
+        content: content_string,
+        disableAutoPan: false
+      });
+
+      this.attributes["info_window"] = info_window;
+      return this.attributes["info_window"];
+    },
+
+    buildInfoBox: function() {
+      if (this.attributes["info_window"])
+        return this.attributes["info_window"];
+
       var boxText = document.createElement("div");
       var content_string = "<div class=\"suburb-info-box\">";
       content_string += "<div class=\"image\"><img src=\"" + this.streetViewImage() + "\" width=\"365\" height=\"65\" /></div>";
@@ -144,8 +165,8 @@ define([
       });
 
       google.maps.event.addListener(context.buildInfoWindow(), 'domready', function() {
-        $(".suburb-info-box").parent().css("position", "absolute");
-        $(".suburb-info-box").parent().css("top", "0px");
+        //$(".suburb-info-box").parent().css("position", "absolute");
+        //$(".suburb-info-box").parent().css("top", "0px");
         $(".suburb-info-box").on("click", function() {
           context.markerClickEvent(context, event);
         })
