@@ -20,6 +20,10 @@ define([
       return this.model.type == "multi"
     },
 
+    isMultiDrop: function() {
+      return this.model.type == "multi-drop"
+    },
+
     multiValues: function() {
       if (this.model.values)
         return this.model.values;
@@ -35,6 +39,7 @@ define([
         text:        this.model.q,
         val:         this.set_value,
         isMulti:     this.isMulti(),
+        isMultiDrop: this.isMultiDrop(),
         multiValues: this.multiValues()
       };
 
@@ -66,6 +71,8 @@ define([
           if (sender.data("val") == item.key)
             value = item.key;
         })
+      } else if (this.isMultiDrop()) {
+        value = $(container).find("[name=value]").val();
       } else {
         value = $(container).find("[name=response]").val();
       }

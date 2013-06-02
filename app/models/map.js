@@ -43,7 +43,7 @@ define([
         return Map.activeMap;
 
       var mapOptions = {
-        zoom: 14,
+        zoom: 10,
         center: new google.maps.LatLng(-31.9530044, 115.8585),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         overviewMapControl: false,
@@ -60,6 +60,12 @@ define([
       google.maps.visualRefresh = true;
 
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      google.maps.event.addListener(map, 'zoom_changed', function() {
+        var cur_zoom = map.getZoom();
+        if (cur_zoom > 14)
+          map.setZoom(14);
+      });
 
       Map.activeMap = map;
     }

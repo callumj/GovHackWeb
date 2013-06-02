@@ -14,4 +14,12 @@
       <input class="next true {{hideable this.key ../this}}"  type="button" value="{{s}}" data-val="{{key}}" />
     {{/each}}
   {{/if}}
+  {{#if isMultiDrop}}
+    <select name="value">
+      {{#each multiValues}}
+        <option value="{{key}}">{{s}}</option>
+      {{/each}}
+    </select>
+     <input class="next" type="submit" value="Next" />
+  {{/if}}
 </div>

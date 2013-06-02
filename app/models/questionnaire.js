@@ -14,7 +14,7 @@ define([
     {q: "Is a Local Daycare Centre Benificial?",               key: "yolo",      type: "boolean"},
     {q: "Would You Use a Library?",                             key: "yolo",      type: "boolean"},
     {q: "Would You Use A Local Gym?",                             key: "yolo",      type: "boolean"},
-    {q: "Do You Love a Good Coffee?",                             key: "yolo",      type: "boolean"},
+    {q: "Do you want to live near the city?", key: "closeToCity", type: "boolean"},
     {q: "Do You Enjoy The Beach?",                             key: "yolo",      type: "boolean"},
     {q: "Do You Have Children?",                             key: "yolo",      type: "boolean"},
     {q: "Do You Own A Pet?",                             key: "yolo",      type: "boolean"},
@@ -29,9 +29,21 @@ define([
         {key: "0-20",  s: ">21"},
         {key: "21-35", s: "21 - 35"},
         {key: "36-45", s: "36 - 45"},
-        {key: "46",    s: "46+"}
+        {key: "46-55",    s: "46 - 55"},
+        {key: "55-80",    s: "56+"}
       ]
-    }
+    },
+    {
+      q: "What is your median house price?",
+      key: "housePrice",
+      type: "multi-drop",
+      values: [
+        {key: "200000-500000",  s: "200 000 - 500 000"},
+        {key: "500000-1000000", s: "500 000 - 1 000 000"},
+        {key: "1000000-1500000", s: "1 000 000 - 1 500 000"},
+        {key: "1500000-2500000", s: "1 000 000 - 2 500 000"},
+      ]
+    },
   ];
 
   var Questionnaire = Backbone.Model.extend({
@@ -68,6 +80,21 @@ define([
 
     isExhausted: function() {
       return this.attributes.answeredKeys.length == QUESTIONNAIRES.length;
+    },
+
+    responseForSerialization: function() {
+      var response = {}
+      var context = this;
+      _.each(this.attributes["answeredKeys"], function(key) {
+        var value = context.attributes["answered"][key];
+        if (typeof(value) == "string" && value.indexOf("-") != -1)
+          value = value.split("-");
+        response[key] = value;
+      });
+
+      response["state"] = "WA";
+
+      return response;
     }
 
   });

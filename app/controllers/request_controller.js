@@ -9,9 +9,9 @@ define([
       $.ajax({
         dataType: "json",
         url: "http://placeme.azurewebsites.net/suburb/recommendation",
-        data: model.attributes,
+        data: {responses: model.responseForSerialization()},
         success: callback
-      })
+      });
     }
 
     var sendResponse = function(model, callback) {

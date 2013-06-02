@@ -10,20 +10,20 @@ define([
 
     serialize: function() {
       var response = {
-        suburbName:         this.displayName(),
-        postCode:           this.postCode(),
+        suburbName:         this.model.displayName(),
+        postCode:           this.model.postCode(),
         suburbInfo:         "",
-        avgCostPurchase:    this.model.attributes.Price,
+        avgCostPurchase:    this.model.attributes.Suburb.Price,
         avgCostRent:        0,
-        cbdDistance:        this.model.attributes.DistanceToCityText,
-        cbdTiming:          this.model.attributes.TimeToCityText,
+        cbdDistance:        this.model.attributes.Suburb.DistanceToCityText,
+        cbdTiming:          this.model.attributes.Suburb.TimeToCityText,
         airportDistance:    0,
         coastlineDistance:  0,
-        growthPercentage:   this.model.attributes.GrowthPercentage,
-        population:         this.model.attributes.Population,
-        sizeSquared:        this.model.attributes.SizeKmSquared,
-        percentFemale:      this.model.attributes.PercentFemales,
-        percentMale:        this.model.attributes.PercentMales
+        growthPercentage:   this.model.attributes.Suburb.GrowthPercentage,
+        population:         this.model.attributes.Suburb.Population,
+        sizeSquared:        this.model.attributes.Suburb.SizeKmSquared,
+        percentFemale:      this.model.attributes.Suburb.PercentFemales,
+        percentMale:        this.model.attributes.Suburb.PercentMales
       };
 
       return response;
@@ -32,22 +32,6 @@ define([
     sendEvent: function(type, event) {
       if (this.eventHandler)
         this.eventHandler(type, event);
-    },
-
-    postCode: function() {
-      var code = "0000";
-      if (this.model.attributes.Postcodes) {
-        var first_code = this.model.attributes.Postcodes[0];
-        if (first_code)
-          code = first_code.Id
-      }
-      return code;
-    },
-
-    displayName: function() {
-      return this.model.attributes.Name.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
-          return match.toUpperCase();
-      });
     }
   });
 

@@ -20,14 +20,24 @@ define([
         this.attributes.polygon.setMap(null);
     },
 
+    postCode: function() {
+      var code = "0000";
+      if (this.attributes.Suburb.Postcodes) {
+        var first_code = this.attributes.Suburb.Postcodes[0];
+        if (first_code)
+          code = first_code.Id
+      }
+      return code;
+    },
+
     displayName: function() {
-      return this.attributes.Name.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
-        return match.toUpperCase();
+      return this.attributes.Suburb.Name.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+          return match.toUpperCase();
       });
     },
 
     address: function() {
-      return this.attributes.Name + ", " + this.attributes.State;
+      return this.attributes.Suburb.Name + ", " + this.attributes.Suburb.State;
     },
 
     centerLocation: function() {
@@ -61,7 +71,7 @@ define([
     polygonArray: function() {
       var arry = [];
       var wkt    = new Wicket.Wkt();
-      var parsed = wkt.read(this.attributes.Geometry.Geometry.WellKnownText);
+      var parsed = wkt.read(this.attributes.Suburb.Geometry.Geometry.WellKnownText);
       _.each(parsed[0], function(coord) {
         arry.push(new google.maps.LatLng(coord.y, coord.x));
       });
@@ -152,7 +162,7 @@ define([
       var marker = new google.maps.Marker({
         position: this.attributes.location,
         map: Map.loadedMap(),
-        title: this.attributes.suburb_name,
+        title: this.displayName(),
         animation: google.maps.Animation.DROP
       });
 
