@@ -37,8 +37,11 @@ define([
     ];
 
     var loadedMap = function() {
+      google.maps.visualRefresh = true;
+
       if (Map.activeMap)
         return Map.activeMap;
+
       var mapOptions = {
         zoom: 14,
         center: new google.maps.LatLng(-31.9530044, 115.8585),
