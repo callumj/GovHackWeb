@@ -4,8 +4,11 @@ define([
   'underscore',
   'backbone'
 ], function($, unds, Backbone) {
+
+  var REQUIRED_KEYS = ["age", "housePrice", "closeToCity"];
+
   var QUESTIONNAIRES = [
-    {q: "Do you use Public Transport?",                           key: "near_work", type: "boolean"},
+    {q: "Do you use Public Transport?",                           key: "pub_transport", type: "boolean"},
     {q: "Is A Local Shopping Centre Important?",                 key: "entertain", type: "boolean"},
     {q: "Do You Ride A Bike? Or Use Cycling Paths?",              key: "yolo",      type: "boolean"},
     {q: "Would You Use A Local Recreation Centre?",               key: "swag",      type: "boolean"},
@@ -70,8 +73,12 @@ define([
       this.attributes["answered"][key] = value;
     },
 
+    answeredRequired: function() {
+      return (_.intersection(this.attributes.answeredKeys, REQUIRED_KEYS).length == 3);
+    },
+
     reachedMinimumSufficientData: function() {
-      return this.attributes.answeredKeys.length >= 3;
+      return this.answeredRequired() && this.attributes.answeredKeys.length >= 5;
     },
 
     percentageComplete: function() {

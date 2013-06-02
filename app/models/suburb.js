@@ -144,9 +144,9 @@ define([
       });
 
       google.maps.event.addListener(context.buildInfoWindow(), 'domready', function() {
-        $(".info_box").parent().css("position", "absolute");
-        $(".info_box").parent().css("top", "0px");
-        $(".info_box").on("click", function() {
+        $(".suburb-info-box").parent().css("position", "absolute");
+        $(".suburb-info-box").parent().css("top", "0px");
+        $(".suburb-info-box").on("click", function() {
           context.markerClickEvent(context, event);
         })
       });
