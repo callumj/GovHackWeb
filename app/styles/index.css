@@ -333,3 +333,17 @@ html.action-button-visible #question-container {
 
 #gmnoprint, .gmnoprint {
   display: none !important; }
+
+#suburb-info {
+  top:        0;
+  left:       0;
+  position:   absolute;
+  height:     100%;
+  width:      400px;
+  margin:     0;
+  padding:    0;
+  clear:      both;
+  background-color: white;
+  display:    none;
+  z-index:    99;
+}

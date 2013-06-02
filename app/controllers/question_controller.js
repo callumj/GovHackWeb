@@ -24,7 +24,7 @@ define([
 
     var reset = function() {
       hideActionButton();
-      MapController.animateMapOut();
+      MapController.reset();
       QuestionController.activeQuestionnaire = new Questionnaire();
       QuestionController.mapViewable = false;
       nextQuestion();

@@ -17,7 +17,7 @@ define([
     var showSuburbInfo = function(suburb) {
       loadView();
 
-      SuburbInfoController.activeView.model = suburb.attributes;
+      SuburbInfoController.activeView.model = suburb;
       SuburbInfoController.activeView.el.show();
       SuburbInfoController.activeView.render();
     }

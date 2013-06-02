@@ -20,6 +20,12 @@ define([
         this.attributes.polygon.setMap(null);
     },
 
+    displayName: function() {
+      return this.attributes.Name.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+        return match.toUpperCase();
+      });
+    },
+
     address: function() {
       return this.attributes.Name + ", " + this.attributes.State;
     },
@@ -77,24 +83,23 @@ define([
         return this.attributes["info_window"];
 
       var boxText = document.createElement("div");
-      boxText.style.cssText = "background: white";
       var content_string = "<div class=\"suburb-info-box\">";
       content_string += "<div class=\"image\"><img src=\"" + this.streetViewImage() + "\" width=\"365\" height=\"65\" /></div>";
       content_string += "<div class=\"copy\">";
-      content_string += "<h1>" + this.attributes.Name + "<span>" + this.attributes.percent + "<small>%</small><span></h1>";
+      content_string += "<h1>" + this.attributes.Name.toLowerCase() + "<span>" + this.attributes.percent + "<small>%</small><span></h1>";
       content_string += "<h3>" + this.postCode() + "<span>" + this.attributes.DistanceToCityText + "to the CBD.</span></h3>";
       content_string += "</div>";
-
-      content_string += "</div>"
+      content_string += "</div>";
       boxText.innerHTML = content_string;
 
       var info_window = new InfoBox({
         pixelOffset:    new google.maps.Size(-(400 / 2), 0),
         position:       this.centerLocation(),
         content:        boxText,
+        closeBoxURL:    "",
         boxStyle: {
-          width: "400px",
-          height: "400px"
+          width: "365px",
+          height: "150px"
         }
       });
 
@@ -106,11 +111,11 @@ define([
       var set = this.polygonArray();
       var polygon = new google.maps.Polygon({
         paths: set,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35
+        strokeColor: '#28b263',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        fillColor: '#31d978',
+        fillOpacity: 0.50
       });
 
       polygon.setMap(Map.loadedMap());
@@ -132,6 +137,14 @@ define([
       });
       google.maps.event.addListener(polygon, 'click', function(event) {
         context.markerClickEvent(context, event);
+      });
+
+      google.maps.event.addListener(context.buildInfoWindow(), 'domready', function() {
+        $(".info_box").parent().css("position", "absolute");
+        $(".info_box").parent().css("top", "0px");
+        $(".info_box").on("click", function() {
+          context.markerClickEvent(context, event);
+        })
       });
     },
 
