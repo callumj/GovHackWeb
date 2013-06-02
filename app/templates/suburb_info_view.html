@@ -28,16 +28,16 @@
   <li><strong>{{sizeSquared}}</strong>Size (km2)</li>
 </ul>
 
-<div class="chart-col">
+<!-- <div class="chart-col">
   <canvas class="chart" data-type="Bar" width="253"></canvas>
   <canvas class="chart" data-type="Doughnut" width="253"></canvas>
-</div>
+</div> -->
 
 <ul>
-  <li><strong>21 - 35</strong>Most Popular Age Bracket</li>
+  <li><strong>{{avgAge}}</strong>Average Age</li>
   <li><strong>{{percentFemale}}:{{percentMale}}</strong>Male: Female ratio</li>
-  <li><strong>$75'000</strong>Average Income</li>
-  <li><strong>2013</strong>NBN Completion</li>
+  <li><strong>{{avgSalary}}</strong>Average Income</li>
+  <li><strong>{{nbnLastWorkCommenceYear}}</strong>NBN Completion</li>
   <li><strong>Great</strong>Transport Access</li>
 </ul>
 
@@ -45,10 +45,8 @@
 
 <article>
 <span class="icon" style="background-image:url('img/house-icon.png')"></span>
-<h2>Property <small>(3 bedroom, shared)</small></h2>
 <ul>
-  <li><strong>$1'387'900</strong>House Sale Median</li>
-  <li><a href="#" class="outlink" target="_blank">12 For Sale</a></li>
+  <li><strong>{{avgCostPurchase}}</strong>House Sale Median</li>
 </ul>
 
 </article>

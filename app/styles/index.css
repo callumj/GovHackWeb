@@ -248,6 +248,8 @@ section#about-placeme {
       margin-right: 55px;
       overflow: hidden;
       float: left; }
+      section#about-placeme .about-content .our-app h1 {
+        font-size: 24px; }
     section#about-placeme .about-content .our-video {
       width: 600px;
       height: 315px;
@@ -286,7 +288,7 @@ section#twitter {
       transform-origin: 54px center;
       cursor: pointer; }
       section#twitter .bird .bird-wings:hover {
-        -webkit-animation: wings 0.3s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        -webkit-animation: wings 0.8s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
         -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
 footer {
