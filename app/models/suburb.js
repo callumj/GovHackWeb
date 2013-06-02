@@ -54,7 +54,7 @@ define([
     },
 
     percentage: function() {
-      return (100 - this.attributes.RankCoefficient);
+      return (100 - Math.abs(this.attributes.RankCoefficient));
     },
 
     populateLocation: function(location_callback) {
