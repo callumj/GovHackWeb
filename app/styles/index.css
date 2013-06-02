@@ -11,17 +11,8 @@
   text-rendering: optimizeLegibility; }
 
 h2 {
-  font-size: 16px;
-  color: #b5b5b5;
-  text-align: center;
-  font-weight: normal; }
-
-h1 {
-  color: #2c3e50;
-  font-size: 42px;
-  font-family: "CoreSansN35Light";
-  font-weight: normal;
-  margin: 0px; }
+  font-size: 24px;
+  line-height: 24px; }
 
 p {
   font-size: 14px;
@@ -82,7 +73,7 @@ header {
       right: 0px;
       margin: 0 auto; }
   header #question-container {
-    width: 545px;
+    width: 580px;
     height: 294px;
     margin: 0 auto;
     z-index: 200;
@@ -97,14 +88,18 @@ header {
       padding: 0px 20px;
       overflow: hidden;
       width: 100%; }
+      header #question-container .tag-lines h2 {
+        font-size: 16px;
+        color: #b5b5b5;
+        text-align: center;
+        font-weight: normal; }
     header #question-container #question-content {
-      width: 470px;
+      width: 580px;
       height: 80px;
       background: white;
       border: 1px solid #bababa;
       padding: 0px 20px;
       line-height: 78px;
-      left: 37.5px;
       position: absolute;
       z-index: 20;
       -webkit-transition: all 0.5s ease-in-out; }
@@ -145,14 +140,31 @@ header {
           -webkit-transition: background-position 0.2s ease-in-out; }
           header #question-container #question-content .buttons input[value="No"]:hover {
             background-position: -14px -58px; }
-        header #question-container #question-content .buttons input[value=">21"], header #question-container #question-content .buttons input[value="46+"] {
+        header #question-container #question-content .buttons input[value=">21"], header #question-container #question-content .buttons input[value="56+"] {
           width: 43px; }
+        header #question-container #question-content .buttons select[name="value"] {
+          background: transparent;
+          border: none;
+          background-color: white;
+          color: #939393;
+          font-family: "CoreSansN35Light";
+          font-size: 14px;
+          border-radius: 0px;
+          border-bottom: 1px solid #cccccc;
+          width: 230px;
+          height: 32px;
+          line-height: 32px;
+          padding: 0px 10px;
+          -webkit-appearance: none; }
+          header #question-container #question-content .buttons select[name="value"]:hover {
+            color: #2ecc71;
+            border-bottom: 2px solid #2ecc71; }
     header #question-container #question-controller {
       width: 150px;
       height: 80px;
       line-height: 78px;
       color: white;
-      right: 20px;
+      right: 0px;
       position: absolute;
       -webkit-transition: all 0.5s ease-in-out; }
       header #question-container #question-controller input[type="submit"] {
@@ -277,13 +289,33 @@ section#twitter {
         -webkit-animation: wings 0.3s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
         -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
+footer {
+  background-color: #359154;
+  color: white;
+  font-family: helvetica;
+  overflow: auto; }
+  footer div {
+    padding: 23px 0px;
+    width: 1024px;
+    margin: 0px auto; }
+  footer a, footer p {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    padding: 0; }
+  footer a {
+    margin: 0 29px 0 0; }
+  footer p {
+    float: right;
+    margin: 0; }
+
 .suburb-info-box {
   width: 365px;
   background-color: white;
   overflow: visible;
   box-shadow: 0 40px 50px -30px rgba(0, 0, 0, 0.6); }
   .suburb-info-box:after {
-    content: "";
+    content: "\00a0";
     display: block;
     position: absolute;
     left: 50%;
@@ -295,7 +327,7 @@ section#twitter {
     border-right: 12px solid transparent;
     border-top: 12px solid white; }
   .suburb-info-box .image {
-    height: 63px;
+    height: 65px;
     overflow: none;
     margin-bottom: 14px; }
   .suburb-info-box .copy {
@@ -311,8 +343,8 @@ section#twitter {
       margin-left: 0px;
       margin-right: 0px;
       margin-top: 0px;
-      text-rendering: optimizelegibility;
       width: 325px;
+      text-align: left;
       zoom: 1; }
     .suburb-info-box .copy h1:before, .suburb-info-box .copy h3:before, .suburb-info-box .copy h1:after, .suburb-info-box .copy h3:after {
       display: table;
@@ -324,12 +356,201 @@ section#twitter {
       display: block;
       float: right; }
 
+#suburb-info {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 618px;
+  height: 100%;
+  overflow: auto;
+  display: none;
+  background-color: white;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+  -webkit-transition: left 0.5s ease-out;
+  -moz-transition: left 0.5s ease-out;
+  -o-transition: left 0.5s ease-out;
+  transition: left 0.5s ease-out; }
+  #suburb-info h2 {
+    font-weight: 24px;
+    text-align: left; }
+  #suburb-info h3 {
+    color: white; }
+  #suburb-info.hidden {
+    left: -618px; }
+  #suburb-info article {
+    position: relative;
+    padding: 53px 56px;
+    border-bottom: 1px solid #d5d5d5;
+    background: white center center no-repeat;
+    background-size: cover;
+    font-size: 14px;
+    line-height: 21px; }
+    #suburb-info article:before {
+      display: table;
+      content: "";
+      line-height: 0; }
+    #suburb-info article:after {
+      display: table;
+      content: "";
+      line-height: 0;
+      clear: both; }
+    #suburb-info article .icon {
+      float: right;
+      width: 30px;
+      height: 28px;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat; }
+    #suburb-info article.photo {
+      height: 243px;
+      border: none;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      #suburb-info article.photo h1 {
+        color: white;
+        font-size: 45px;
+        margin-top: 22px; }
+      #suburb-info article.photo h3 {
+        font-weight: bold;
+        font-size: 20px;
+        color: white4;
+        margin-top: 17px; }
+      #suburb-info article.photo h1, #suburb-info article.photo h3, #suburb-info article.photo a {
+        position: relative;
+        z-index: 10; }
+      #suburb-info article.photo:after {
+        content: "";
+        position: absolute;
+        z-index: 9;
+        left: 0;
+        top: 0;
+        width: 618px;
+        height: 243px;
+        background-color: black;
+        opacity: 0.5;
+        filter: alpha(opacity=50); }
+  #suburb-info ul {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0;
+    *zoom: 1; }
+    #suburb-info ul:before {
+      display: table;
+      content: "";
+      line-height: 0; }
+    #suburb-info ul:after {
+      display: table;
+      content: "";
+      line-height: 0;
+      clear: both; }
+    #suburb-info ul li {
+      font-size: 16px;
+      color: #626262;
+      width: 50%;
+      float: left;
+      margin: 36px 0 36px 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      #suburb-info ul li strong {
+        display: block;
+        font-weight: 300;
+        font-size: 43px;
+        color: #363636; }
+  #suburb-info #close-results {
+    text-decoration: none;
+    color: white;
+    padding-left: 18px;
+    background: url("/img/arrow-icon-left.svg") left 4px no-repeat;
+    background-size: 8px 13px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 31px;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased; }
+  #suburb-info #results-share {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    height: 38px;
+    width: 38px;
+    background-image: url("/img/share-icon.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.1);
+    overflow: visible;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-clip: padding-box;
+    cursor: pointer; }
+    #suburb-info #results-share ul {
+      display: none;
+      margin: 0; }
+    #suburb-info #results-share:hover ul {
+      display: block;
+      list-style: none;
+      padding: 0px;
+      margin: 0; }
+    #suburb-info #results-share li {
+      width: 148px;
+      font-size: 13px;
+      font-size: 0.8125rem;
+      border-top: 1px solid #ededed;
+      margin: 0;
+      padding: 5px 0px 5px 12px;
+      float: right;
+      background-color: white; }
+      #suburb-info #results-share li a {
+        text-decoration: none;
+        color: #5c5c5c; }
+      #suburb-info #results-share li span {
+        display: inline-block;
+        height: 23px;
+        width: 27px;
+        background-image: url("/img/share-sprite-sheet.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative;
+        top: 5px;
+        margin-right: 12px; }
+      #suburb-info #results-share li:first-child, #suburb-info #results-share li:hover {
+        background-color: #f3f3f3; }
+  #suburb-info .chart[data-type="Line"] {
+    position: relative;
+    left: -27px; }
+  #suburb-info .chart[data-type="Doughnut"], #suburb-info .chart[data-type="Pie"], #suburb-info .chart[data-type="Bar"] {
+    float: left; }
+  #suburb-info .chart-col {
+    *zoom: 1;
+    margin: 36px 0; }
+    #suburb-info .chart-col:before {
+      display: table;
+      content: "";
+      line-height: 0; }
+    #suburb-info .chart-col:after {
+      display: table;
+      content: "";
+      line-height: 0;
+      clear: both; }
+  #suburb-info li .outlink {
+    text-align: center; }
+
 html.map-active #question-container {
   display: none; }
 html.action-button-visible #question-container {
   width: 670px; }
   html.action-button-visible #question-container #question-content {
-    left: 20px; }
+    left: 0px;
+    width: 500px; }
 
 #gmnoprint, .gmnoprint {
   display: none !important; }

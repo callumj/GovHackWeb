@@ -14,17 +14,9 @@
   text-rendering: optimizeLegibility
 
 h2
-  font-size: 16px
-  color: #b5b5b5
-  text-align: center
-  font-weight: normal
+  font-size: 24px
+  line-height: 24px
 
-h1
-  color: #2c3e50
-  font-size: 42px
-  font-family: 'CoreSansN35Light'
-  font-weight: normal
-  margin: 0px
 
 
 p
@@ -88,7 +80,7 @@ header
       margin: 0 auto
 
   #question-container
-    width: 545px
+    width: 580px
     height: 294px
     margin: 0 auto
     z-index: 200
@@ -104,14 +96,19 @@ header
       overflow: hidden
       width: 100%
 
+      h2
+        font-size: 16px
+        color: #b5b5b5
+        text-align: center
+        font-weight: normal
+
     #question-content
-      width: 470px
+      width: 580px
       height: 80px
       background: #fff
       border: 1px solid #bababa
       padding: 0px 20px
       line-height: 78px
-      left: 37.5px
       position: absolute
       z-index: 20
       -webkit-transition: all 0.5s ease-in-out
@@ -162,8 +159,27 @@ header
           &:hover
             background-position: -14px -58px
 
-        input[value=">21"], input[value="46+"]
+        input[value=">21"], input[value="56+"]
           width: 43px
+
+        select[name="value"]
+          background: transparent
+          border: none
+          background-color: #fff
+          color: #939393
+          font-family: 'CoreSansN35Light'
+          font-size: 14px
+          border-radius: 0px
+          border-bottom: 1px solid #cccccc
+          width: 230px
+          height: 32px
+          line-height: 32px
+          padding: 0px 10px
+          -webkit-appearance: none
+
+          &:hover
+            color: #2ecc71
+            border-bottom: 2px solid #2ecc71
 
 
     #question-controller
@@ -171,7 +187,7 @@ header
       height: 80px
       line-height: 78px
       color: #fff
-      right: 20px
+      right: 0px
       position: absolute
       -webkit-transition: all 0.5s ease-in-out
 
@@ -301,6 +317,25 @@ section#twitter
 
 
 
+footer
+  background-color: #359154
+  color: white
+  font-family: helvetica
+  overflow: auto
+  div
+    padding: 23px 0px
+    width: 1024px
+    margin: 0px auto
+  a, p
+    text-decoration: none
+    color: white
+    font-size: 12px
+    padding: 0
+  a
+    margin: 0 29px 0 0
+  p
+    float: right
+    margin: 0
 
 
 // THIS IS APP STUFF NOW
@@ -311,7 +346,7 @@ section#twitter
   overflow: visible
   box-shadow: 0 40px 50px -30px rgba(0, 0, 0, 0.6)
   &:after
-    content: ""
+    content: "\00a0"
     display: block
     position: absolute
     left: 50%
@@ -323,7 +358,7 @@ section#twitter
     border-right: 12px solid transparent
     border-top: 12px solid #ffffff
   .image
-    height: 63px
+    height: 65px
     overflow: none
     margin-bottom: 14px
   .copy
@@ -340,9 +375,8 @@ section#twitter
       margin-left: 0px
       margin-right: 0px
       margin-top: 0px
-      text-rendering: optimizelegibility
       width: 325px
-
+      text-align: left
       zoom: 1
 
 
@@ -365,6 +399,200 @@ section#twitter
 
 
 
+#suburb-info
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 9999
+  width: 618px
+  height: 100%
+  overflow: auto
+  display: none
+  background-color: white
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4)
+  -moz-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4)
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4)
+  -webkit-transition: left 0.5s ease-out
+  -moz-transition: left 0.5s ease-out
+  -o-transition: left 0.5s ease-out
+  transition: left 0.5s ease-out
+
+  h2
+    font-weight: 24px
+    text-align: left
+
+  h3
+    color: #fff
+
+  &.hidden
+    left: -618px
+
+  article
+    position: relative
+    padding: 53px 56px
+    border-bottom: 1px solid #d5d5d5
+    background: white center center no-repeat
+    background-size: cover
+    font-size: 14px
+    line-height: 21px
+
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+    .icon
+      float: right
+      width: 30px
+      height: 28px
+      background-size: contain
+      background-position: center center
+      background-repeat: no-repeat
+    &.photo
+      height: 243px
+      border: none
+      -webkit-box-sizing: border-box
+      -moz-box-sizing: border-box
+      box-sizing: border-box
+      h1
+        color: white
+        font-size: 45px
+        margin-top: 22px
+      h3
+        font-weight: bold
+        font-size: 20px
+        color: white4
+        margin-top: 17px
+      h1, h3, a
+        position: relative
+        z-index: 10
+      &:after
+        content: ""
+        position: absolute
+        z-index: 9
+        left: 0
+        top: 0
+        width: 618px
+        height: 243px
+        background-color: #000000
+        opacity: 0.5
+        filter: alpha(opacity = 50)
+  ul
+    list-style: none
+    margin: 0 0 0 0
+    padding: 0
+    *zoom: 1
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+    li
+      font-size: 16px
+      color: #626262
+      width: 50%
+      float: left
+      margin: 36px 0 36px 0
+      -webkit-box-sizing: border-box
+      -moz-box-sizing: border-box
+      box-sizing: border-box
+      strong
+        display: block
+        font-weight: 300
+        font-size: 43px
+        color: #363636
+  #close-results
+    text-decoration: none
+    color: white
+    padding-left: 18px
+    background: url('/img/arrow-icon-left.svg') left 4px no-repeat
+    background-size: 8px 13px
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-size: 16px
+    font-size: 1rem
+    font-weight: bold
+    line-height: 31px
+    text-rendering: optimizelegibility
+    -webkit-font-smoothing: antialiased
+  #results-share
+    position: absolute
+    top: 14px
+    right: 14px
+    z-index: 10
+    height: 38px
+    width: 38px
+    background-image: url('/img/share-icon.png')
+    background-position: center center
+    background-repeat: no-repeat
+    border: 1px solid rgba(255, 255, 255, 0.4)
+    background-color: rgba(255, 255, 255, 0.1)
+    overflow: visible
+    -webkit-border-radius: 2px
+    -moz-border-radius: 2px
+    border-radius: 2px
+    background-clip: padding-box
+    cursor: pointer
+    ul
+      display: none
+      margin: 0
+    &:hover ul
+      display: block
+      list-style: none
+      padding: 0px
+      margin: 0
+    li
+      width: 148px
+      font-size: 13px
+      font-size: 0.8125rem
+      border-top: 1px solid #ededed
+      margin: 0
+      padding: 5px 0px 5px 12px
+      float: right
+      background-color: white
+      a
+        text-decoration: none
+        color: #5c5c5c
+      span
+        display: inline-block
+        height: 23px
+        width: 27px
+        background-image: url('/img/share-sprite-sheet.png')
+        background-position: center center
+        background-repeat: no-repeat
+        position: relative
+        top: 5px
+        margin-right: 12px
+      &:first-child, &:hover
+        background-color: #f3f3f3
+  .chart
+    &[data-type="Line"]
+      position: relative
+      left: -27px
+    &[data-type="Doughnut"], &[data-type="Pie"], &[data-type="Bar"]
+      float: left
+  .chart-col
+    *zoom: 1
+    margin: 36px 0
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+  li .outlink
+    text-align: center
+
 
 
 
@@ -383,7 +611,8 @@ html
       width: 670px
 
       #question-content
-        left: 20px
+        left: 0px
+        width: 500px
 
 
 #gmnoprint, .gmnoprint
