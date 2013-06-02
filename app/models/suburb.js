@@ -128,7 +128,6 @@ define([
       });
 
       google.maps.event.addListener(context.buildInfoWindow(), 'domready', function() {
-        debugger;
         $(".info_box").parent().css("position", "absolute");
         $(".info_box").parent().css("top", "0px");
       });
