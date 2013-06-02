@@ -96,7 +96,7 @@ define([
       var content_string = "<div class=\"suburb-info-box\">";
       content_string += "<div class=\"image\"><img src=\"" + this.streetViewImage() + "\" width=\"365\" height=\"65\" /></div>";
       content_string += "<div class=\"copy\">";
-      content_string += "<h1>" + this.attributes.Name.toLowerCase() + "<span>" + this.attributes.percent + "<small>%</small><span></h1>";
+      content_string += "<h1>" + this.displayName() + "<span>" + this.attributes.percent + "<small>%</small><span></h1>";
       content_string += "<h3>" + this.postCode() + "<span>" + this.attributes.DistanceToCityText + "to the CBD.</span></h3>";
       content_string += "</div>";
       content_string += "</div>";
