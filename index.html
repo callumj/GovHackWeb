@@ -4,55 +4,22 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
   <title>PlaceMe</title>
-
-  <!-- Application styles. -->
-
-  <!--(if target dummy)><!-->
   <link rel="stylesheet" href="/app/styles/animations.css">
   <link rel="stylesheet" href="/app/styles/index.css">
-
-  <!--<!(endif)-->
-
-  <!--(if target release)>
-  <link rel="stylesheet" href="index.css">
-  <!(endif)-->
-
-  <!--(if target debug)>
-  <link rel="stylesheet" href="index.css">
-  <!(endif)-->
 </head>
 
 <body>
-  <!-- Application container. -->
-
   <main role="main" id="main">
   </main>
-
-  <!-- Application source. -->
-
-  <!--(if target dummy)><!-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARYxWXRAb58n_lA3X_YhLQ2zA94PGNFoM&sensor=true"></script>
   <script data-main="/app/config" src="/vendor/js/libs/require.js"></script>
-  <!--<!(endif)-->
-
-  <!--(if target release)>
-  <script src="require.js"></script>
-  <!(endif)-->
-
-  <!--(if target debug)>
-  <script src="require.js"></script>
-  <!(endif)-->
-
   <header>
       <div class="logo-container">
         <div class="map"></div>
         <div class="map-pin"></div>
         <h1>placeme</h1>
-
       </div>
-
       <div id="question-container">
         <div class="tag-lines">
           <h2 class="start">Find the perfect place to live. Start below.</h2>
@@ -65,9 +32,31 @@
       </div>
     <div id="question-history"></div>
   </header>
+  <section id="about-placeme">
+    <div class="about-content">
+      <div class="our-app">
+        <h1>find your place</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </div>
+      <div class="our-video"></div>
+
+  </section>
+  <section id="twitter">
+    <div class="bird">
+      <div class="bird-body"></div>
+      <div class="bird-wings"></div>
+     </div>
+    </section>
+
+
+
+
+  <div id="suburb-info"></div>
   <div id="map-container">
     <div id="map-canvas"></div>
   </div>
-  <div id="suburb-info"></div>
+
+
 </body>
 </html>

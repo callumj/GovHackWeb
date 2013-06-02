@@ -16,6 +16,17 @@ h2 {
   text-align: center;
   font-weight: normal; }
 
+h1 {
+  color: #2c3e50;
+  font-size: 42px;
+  font-family: "CoreSansN35Light";
+  font-weight: normal;
+  margin: 0px; }
+
+p {
+  font-size: 14px;
+  line-height: 28px; }
+
 header {
   width: 100%;
   height: 530px;
@@ -65,6 +76,7 @@ header {
       text-align: center;
       color: white;
       position: absolute;
+      font-family: "CoreSansN35Light";
       bottom: 0px;
       left: 0px;
       right: 0px;
@@ -115,22 +127,26 @@ header {
             font-size: 12px; }
         header #question-container #question-content .buttons input[value="Yes"] {
           background-image: url("../images/sprites.svg");
-          background-position: -56px -15px;
+          background-position: -56px -14px;
           width: 28px;
           height: 24px;
+          margin: 0px 10px;
           text-indent: -1000px;
           -webkit-transition: background-position 0.2s ease-in-out; }
           header #question-container #question-content .buttons input[value="Yes"]:hover {
-            background-position: -56px -58px; }
+            background-position: -56px -57px; }
         header #question-container #question-content .buttons input[value="No"] {
           background-image: url("../images/sprites.svg");
           background-position: -14px -15px;
           width: 22px;
           height: 24px;
+          margin-left: 10px;
           text-indent: -1000px;
           -webkit-transition: background-position 0.2s ease-in-out; }
           header #question-container #question-content .buttons input[value="No"]:hover {
             background-position: -14px -58px; }
+        header #question-container #question-content .buttons input[value=">21"], header #question-container #question-content .buttons input[value="46+"] {
+          width: 43px; }
     header #question-container #question-controller {
       width: 150px;
       height: 80px;
@@ -156,9 +172,6 @@ header {
   width: 800px;
   height: 450px;
   margin: 0 auto;
-  -webkit-perspective: 1000;
-  -moz-perspective: 1000;
-  perspective: 1000;
   position: absolute;
   top: 280px;
   right: 0px;
@@ -170,29 +183,28 @@ header {
   #map-container:after {
     content: "\00a0";
     width: 1004px;
-    height: 10px;
+    height: 15px;
     background: #d3ccb7;
     position: absolute;
     left: -103px;
     right: 0px;
     margin-top: -106px; }
   #map-container #map-canvas {
-    -webkit-transform: rotate3d(60, 0, 0, 65deg) !important;
-    -moz-transform: rotate3d(60, 0, 0, 65deg) !important;
-    -ms-transform: rotate3d(60, 0, 0, 65deg) !important;
-    -o-transform: rotate3d(60, 0, 0, 65deg) !important;
-    transform: rotate3d(60, 0, 0, 65deg) !important;
+    background: #333333;
+    -webkit-transform-origin: center center;
+    -webkit-transform: perspective(1000px) rotateX(65deg) !important;
+    -moz-transform: perspective(1000px) rotateX(65deg) !important;
+    -ms-transform: perspective(1000px) rotateX(65deg) !important;
+    -o-transform: perspective(1000px) rotateX(65deg) !important;
+    transform: perspective(1000px) rotateX(65deg) !important;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    background: #333333;
-    -webkit-transform-origin: center center;
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    -webkit-font-smoothing: none;
     -webkit-transition: all 1s ease-in-out; }
   #map-container.foreground {
     width: 100%;
@@ -203,7 +215,67 @@ header {
     #map-container.foreground #map-canvas {
       width: 100%;
       height: 100%;
-      -webkit-transform: rotate3d(60, 0, 0, 0deg) !important; }
+      -webkit-transform: perspective(1000px) rotateX(0deg) !important;
+      -moz-transform: perspective(1000px) rotateX(0deg) !important;
+      -ms-transform: perspective(1000px) rotateX(0deg) !important;
+      -o-transform: perspective(1000px) rotateX(0deg) !important;
+      transform: perspective(1000px) rotateX(0deg) !important; }
+
+section#about-placeme {
+  width: 100%;
+  height: 650px;
+  background: url("../images/bigmap-shadow.png") center -20px no-repeat; }
+  section#about-placeme .about-content {
+    width: 1080px;
+    height: 315px;
+    margin: 0 auto;
+    padding-top: 220px; }
+    section#about-placeme .about-content .our-app {
+      width: 425px;
+      height: 315px;
+      margin-right: 55px;
+      overflow: hidden;
+      float: left; }
+    section#about-placeme .about-content .our-video {
+      width: 600px;
+      height: 315px;
+      float: left;
+      overflow: hidden;
+      background: url("../images/video-placeholder.jpg") center center no-repeat; }
+
+section#twitter {
+  width: 100%;
+  height: 220px;
+  background-color: #49ba6f;
+  margin: 0 auto; }
+  section#twitter .bird {
+    width: 96px;
+    height: 96px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    top: 70px; }
+    section#twitter .bird .bird-body {
+      width: 96px;
+      height: 96px;
+      background: url("../images/bird-body.svg") center center no-repeat;
+      position: absolute;
+      top: 0px; }
+    section#twitter .bird .bird-wings {
+      width: 50px;
+      height: 60px;
+      padding: 47px;
+      background: url("../images/bird-wings.svg") 15px 13px no-repeat;
+      position: absolute;
+      -webkit-transform-origin: 54px center;
+      -moz-transform-origin: 54px center;
+      -ms-transform-origin: 54px center;
+      -o-transform-origin: 54px center;
+      transform-origin: 54px center;
+      cursor: pointer; }
+      section#twitter .bird .bird-wings:hover {
+        -webkit-animation: wings 0.6s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
 html.map-active #question-container {
   display: none; }
