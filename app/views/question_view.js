@@ -57,6 +57,9 @@ define([
       $(this.el).on("click", ".next", function(event) {
         context.handleNextClick(context, event);
       });
+      $(this.el).find(".drop").change(function(event) {
+        context.handleNextClick(context, event);
+      });
     },
 
     handleNextClick: function(context, event) {

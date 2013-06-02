@@ -15,11 +15,11 @@
     {{/each}}
   {{/if}}
   {{#if isMultiDrop}}
-    <select name="value">
+    <select name="value" class="drop">
+      <option value="null"> </option>
       {{#each multiValues}}
         <option value="{{key}}">{{s}}</option>
       {{/each}}
     </select>
-     <input class="next" type="submit" value="Next" />
   {{/if}}
 </div>
