@@ -62,16 +62,29 @@ define([
       return arry;
     },
 
+    postCode: function() {
+      var code = "0000";
+      if (this.attributes.Postcodes) {
+        var first_code = this.attributes.Postcodes[0];
+        if (first_code)
+          code = first_code
+      }
+      return code;
+    },
+
     buildInfoWindow: function() {
       if (this.attributes["info_window"])
         return this.attributes["info_window"];
 
       var boxText = document.createElement("div");
       boxText.style.cssText = "background: white";
-      var content_string = "<div class=\"info_box\">";
-      content_string += "<div class=\"title\"><h2>" + this.attributes.Name + "</h2></div>";
-      content_string += "<div class=\"percent\">" + this.attributes.percent + "%</div>";
-      content_string += "<div class=\"street-view\"><img src=\"" + this.streetViewImage() + "\" width=\"400\" height=\"100\" /></div>";
+      var content_string = "<div class=\"suburb-info-box\">";
+      content_string += "<div class=\"image\"><img src=\"" + this.streetViewImage() + "\" width=\"365\" height=\"65\" /></div>";
+      content_string += "<div class=\"copy\">";
+      content_string += "<h1>" + this.attributes.Name + "<span>" + this.attributes.percent + "<small>%</small><span></h1>";
+      content_string += "<h3>" + this.postCode() + "<span>" + this.attributes.DistanceToCityText + "to the CBD.</span></h3>";
+      content_string += "</div>";
+
       content_string += "</div>"
       boxText.innerHTML = content_string;
 
@@ -79,8 +92,6 @@ define([
         pixelOffset:    new google.maps.Size(-(400 / 2), 0),
         position:       this.centerLocation(),
         content:        boxText,
-        closeBoxURL:    "http://www.google.com/intl/en_us/mapfiles/close.gif",
-        closeBoxMargin: "10px 2px 2px 2px",
         boxStyle: {
           width: "400px",
           height: "400px"
