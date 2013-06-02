@@ -272,10 +272,9 @@ section#twitter {
       -ms-transform-origin: 54px center;
       -o-transform-origin: 54px center;
       transform-origin: 54px center;
-      cursor: pointer; }
-      section#twitter .bird .bird-wings:hover {
-        -webkit-animation: wings 0.6s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+      cursor: pointer;
+      -webkit-animation: wings 4s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
 html.map-active #question-container {
   display: none; }

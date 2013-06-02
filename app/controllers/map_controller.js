@@ -57,9 +57,11 @@ define([
     var locationReady = function(suburb) {
       MapController.locationsLoaded += 1;
       animateMapIn();
-      setTimeout(resizeMap, 1000)
+      setTimeout(resizeMap, 1000);
       setTimeout(centerMap, 1000);
       setTimeout(drawPolygons, 2300);
+      $("section#about-placeme").hide();
+      $("section#twitter").hide();
       google.maps.event.trigger(Map.loadedMap().setOptions({styles: Map.MapStyleLabels, draggable: true, scrollwheel: false}));
     }
 
