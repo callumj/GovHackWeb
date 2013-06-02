@@ -12,7 +12,7 @@ define([
       var response = {
         suburbName:         this.model.displayName(),
         postCode:           this.model.postCode(),
-        suburbInfo:         "",
+        suburbInfo:         this.model.attributes.Suburb.Description,
         avgCostPurchase:    this.model.attributes.Suburb.Price,
         avgCostRent:        0,
         cbdDistance:        this.model.attributes.Suburb.DistanceToCityText,
