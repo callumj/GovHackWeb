@@ -13,7 +13,7 @@ define([
         suburbName:              this.model.displayName(),
         postCode:                this.model.postCode(),
         nbnLastWorkCommenceYear: this.model.nbnLastWorkCommence(),
-        suburbInfo:              this.model.attributes.Suburb.Description,
+        suburbInfo:              this.model.truncatedDescription(),
         avgCostPurchase:         this.model.attributes.Suburb.Price,
         cbdDistance:             this.model.attributes.Suburb.DistanceToCityText,
         cbdTiming:               this.model.attributes.Suburb.TimeToCityText,
@@ -24,7 +24,7 @@ define([
         percentMale:             this.model.attributes.Suburb.PercentMales,
         numNightLife:            this.model.attributes.Suburb.NumNightlife,
         numArtsLife:             this.model.attributes.Suburb.NumArtsAndRecreation,
-        streetViewImage:         this.model.largeStreetViewImage()
+        streetViewImage:         $.trim(this.model.largeStreetViewImage())
       };
 
       return response;

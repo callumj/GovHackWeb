@@ -45,6 +45,17 @@ define([
       return parsed.getFullYear();
     },
 
+    truncatedDescription: function() {
+      var desc = this.attributes.Suburb.Description;
+      if (desc == null) {
+        return "";
+      } else if (desc.length <= 400) {
+        return desc;
+      } else {
+        return (desc.substr(0, 400) + "...");
+      }
+    },
+
     centerLocation: function() {
       var boundObject = new google.maps.LatLngBounds();
       _.each(this.polygonArray(), function(coord) {
@@ -58,7 +69,7 @@ define([
     },
 
     largeStreetViewImage: function() {
-      return "http://maps.googleapis.com/maps/api/streetview?size=243x618&location=" + this.address() +"&pitch=1&sensor=false"
+      return "http://maps.googleapis.com/maps/api/streetview?size=618x243&location=" + this.address() +"&pitch=1&sensor=false"
     },
 
     percentage: function() {
