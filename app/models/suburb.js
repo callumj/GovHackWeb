@@ -34,7 +34,7 @@ define([
 
     streetViewImage: function() {
       var lat_lng = this.centerLocation().lat() + "," + this.centerLocation().lng();
-      return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + lat_lng +"&pitch=1&sensor=false"
+      return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + this.address() +"&pitch=1&sensor=false"
     },
 
     populateLocation: function(location_callback) {
@@ -120,7 +120,7 @@ define([
         context.buildInfoWindow().close(Map.loadedMap(), marker);
       });
       google.maps.event.addListener(polygon, 'click', function(event) {
-        context.markerClickEvent(context, event)
+        context.markerClickEvent(context, event);
       });
     },
 
@@ -142,7 +142,7 @@ define([
         context.buildInfoWindow().close(Map.loadedMap(), marker);
       });
       google.maps.event.addListener(marker, 'click', function(event) {
-        context.markerClickEvent(context, event)
+        context.markerClickEvent(context, event);
       });
     }
 
