@@ -11,7 +11,7 @@ define([
     serialize: function() {
       var response = {
         suburbName:         this.model.Name,
-        postCode:           this.model.PostCodes[0],
+        postCode:           this.model.postCode(),
         suburbInfo:         "",
         avgCostPurchase:    this.model.Price,
         avgCostRent:        0,
@@ -26,6 +26,16 @@ define([
     sendEvent: function(type, event) {
       if (this.eventHandler)
         this.eventHandler(type, event);
+    },
+
+    postCode: function() {
+      var code = "0000";
+      if (this.model.Postcodes) {
+        var first_code = this.model.Postcodes[0];
+        if (first_code)
+          code = first_code
+      }
+      return code;
     }
   });
 

@@ -120,7 +120,7 @@ define([
         context.buildInfoWindow().close(Map.loadedMap(), marker);
       });
       google.maps.event.addListener(polygon, 'click', function(event) {
-        context.markerClickEvent(context, event)
+        context.markerClickEvent(context, event);
       });
     },
 
@@ -142,7 +142,7 @@ define([
         context.buildInfoWindow().close(Map.loadedMap(), marker);
       });
       google.maps.event.addListener(marker, 'click', function(event) {
-        context.markerClickEvent(context, event)
+        context.markerClickEvent(context, event);
       });
     }
 
