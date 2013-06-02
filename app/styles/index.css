@@ -272,9 +272,10 @@ section#twitter {
       -ms-transform-origin: 54px center;
       -o-transform-origin: 54px center;
       transform-origin: 54px center;
-      cursor: pointer;
-      -webkit-animation: wings 4s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+      cursor: pointer; }
+      section#twitter .bird .bird-wings:hover {
+        -webkit-animation: wings 0.3s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        -webkit-transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
 .suburb-info-box {
   width: 365px;
@@ -312,7 +313,6 @@ section#twitter {
       margin-top: 0px;
       text-rendering: optimizelegibility;
       width: 325px;
-      text-transform: capitalize;
       zoom: 1; }
     .suburb-info-box .copy h1:before, .suburb-info-box .copy h3:before, .suburb-info-box .copy h1:after, .suburb-info-box .copy h3:after {
       display: table;
@@ -333,17 +333,3 @@ html.action-button-visible #question-container {
 
 #gmnoprint, .gmnoprint {
   display: none !important; }
-
-#suburb-info {
-  top:        0;
-  left:       0;
-  position:   absolute;
-  height:     100%;
-  width:      400px;
-  margin:     0;
-  padding:    0;
-  clear:      both;
-  background-color: white;
-  display:    none;
-  z-index:    99;
-}

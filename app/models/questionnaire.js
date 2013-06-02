@@ -5,10 +5,22 @@ define([
   'backbone'
 ], function($, unds, Backbone) {
   var QUESTIONNAIRES = [
-    {q: "Do you want to live near work?", key: "near_work", type: "boolean"},
-    {q: "Do you like to entertain?",      key: "entertain", type: "boolean"},
-    {q: "Do you YOLO hard?",              key: "yolo",      type: "boolean"},
-    {q: "Do you have swag?",              key: "swag",      type: "boolean"},
+    {q: "Do you use Public Transport?",                           key: "near_work", type: "boolean"},
+    {q: "Is A Local Shopping Centre Important?",                 key: "entertain", type: "boolean"},
+    {q: "Do You Ride A Bike? Or Use Cycling Paths?",              key: "yolo",      type: "boolean"},
+    {q: "Would You Use A Local Recreation Centre?",               key: "swag",      type: "boolean"},
+    {q: "Is Proximity to Sporting Events Important?",               key: "yolo",      type: "boolean"},
+    {q: "Is living close to an Open Space Important?",               key: "yolo",      type: "boolean"},
+    {q: "Is a Local Daycare Centre Benificial?",               key: "yolo",      type: "boolean"},
+    {q: "Would You Use a Library?",                             key: "yolo",      type: "boolean"},
+    {q: "Would You Use A Local Gym?",                             key: "yolo",      type: "boolean"},
+    {q: "Do You Love a Good Coffee?",                             key: "yolo",      type: "boolean"},
+    {q: "Do You Enjoy The Beach?",                             key: "yolo",      type: "boolean"},
+    {q: "Do You Have Children?",                             key: "yolo",      type: "boolean"},
+    {q: "Do You Own A Pet?",                             key: "yolo",      type: "boolean"},
+    {q: "Is fast Medical Assistance Essential?",                             key: "yolo",      type: "boolean"},
+    {q: "Is Proximity to Schooling Important?",               key: "yolo",      type: "boolean"},
+
     {
       q: "What is your age?",
       key: "age",

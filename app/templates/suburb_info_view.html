@@ -1,6 +1,6 @@
 <div class="header" style="background-image: url({{streetViewImage}});">
-  <h2>{{suburbName}}</h2>
-  <h3>{{postCode}}</h3>
+  <h2></h2>
+  <h3></h3>
 </div>
 <div class="sub-bar">
 
@@ -38,3 +38,64 @@
   <p class="distance">{{coastlineDistance}}</p>
 
 </div>
+
+
+
+<section id="results">
+
+ <article class="photo" style="background-image:url('img/placeholder-photo.jpg');">
+  <div id="results-share" class="open">
+    <ul>
+      <li><span style="background-position: 1px 4px;"></span>Share</li>
+      <li><a href="#"><span style="background-position: 1px -40px;"></span>Twitter</a></li>
+      <li><a href="#"><span style="background-position: 1px -89px;"></span>Facebook</a></li>
+      <li><a href="mailto:?subject=Check out Malands!"><span style="background-position: 1px -135px;"></span>Email</a></li>
+    </ul>
+  </div>
+
+  <a href="#" id="close-results">back</a>
+
+   <h1>{{suburbName}}</h1>
+   <h3>{{postCode}}, Western Australia</h3>
+ </article>
+
+ <article>
+   <h2>About</h2>
+    {{suburbInfo}}
+    <a href="#">Read More</a>
+ </article>
+
+ <article>
+  <span class="icon" style="background-image:url('img/graph-icon.png')"></span>
+  <h2>Overview</h2>
+  <ul>
+    <li><strong>487'900</strong>Population</li>
+    <li><strong>293</strong>Size (km2)</li>
+  </ul>
+
+  <div class="chart-col">
+    <canvas class="chart" data-type="Bar" width="253"></canvas>
+    <canvas class="chart" data-type="Doughnut" width="253"></canvas>
+  </div>
+
+  <ul>
+    <li><strong>21 - 35</strong>Most Popular Age Bracket</li>
+    <li><strong>53:47</strong>Male: Female ratio</li>
+    <li><strong>$75'000</strong>Average Income</li>
+    <li><strong>2013</strong>NBN Completion</li>
+    <li><strong>Great</strong>Transport Access</li>
+  </ul>
+
+ </article>
+
+ <article>
+  <span class="icon" style="background-image:url('img/house-icon.png')"></span>
+  <h2>Property <small>(3 bedroom, shared)</small></h2>
+  <ul>
+    <li><strong>$1'387'900</strong>House Sale Median</li>
+    <li><a href="#" class="outlink" target="_blank">12 For Sale</a></li>
+  </ul>
+
+ </article>
+
+</section>
