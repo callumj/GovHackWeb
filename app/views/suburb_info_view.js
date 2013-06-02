@@ -23,7 +23,8 @@ define([
         percentFemale:           this.model.attributes.Suburb.PercentFemales,
         percentMale:             this.model.attributes.Suburb.PercentMales,
         numNightLife:            this.model.attributes.Suburb.NumNightlife,
-        numArtsLife:             this.model.attributes.Suburb.NumArtsAndRecreation
+        numArtsLife:             this.model.attributes.Suburb.NumArtsAndRecreation,
+        streetViewImage:         this.model.largeStreetViewImage()
       };
 
       return response;

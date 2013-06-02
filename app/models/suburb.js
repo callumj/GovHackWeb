@@ -54,8 +54,11 @@ define([
     },
 
     streetViewImage: function() {
-      var lat_lng = this.centerLocation().lat() + "," + this.centerLocation().lng();
       return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + this.address() +"&pitch=1&sensor=false"
+    },
+
+    largeStreetViewImage: function() {
+      return "http://maps.googleapis.com/maps/api/streetview?size=243x618&location=" + this.address() +"&pitch=1&sensor=false"
     },
 
     percentage: function() {
