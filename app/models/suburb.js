@@ -40,6 +40,11 @@ define([
       return this.attributes.Suburb.Name + ", " + this.attributes.Suburb.State;
     },
 
+    nbnLastWorkCommence: function() {
+      var parsed = new Date(this.attributes.Suburb.NbnLastWorkCommence);
+      return parsed.getFullYear();
+    },
+
     centerLocation: function() {
       var boundObject = new google.maps.LatLngBounds();
       _.each(this.polygonArray(), function(coord) {

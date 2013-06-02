@@ -10,20 +10,20 @@ define([
 
     serialize: function() {
       var response = {
-        suburbName:         this.model.displayName(),
-        postCode:           this.model.postCode(),
-        suburbInfo:         this.model.attributes.Suburb.Description,
-        avgCostPurchase:    this.model.attributes.Suburb.Price,
-        avgCostRent:        0,
-        cbdDistance:        this.model.attributes.Suburb.DistanceToCityText,
-        cbdTiming:          this.model.attributes.Suburb.TimeToCityText,
-        airportDistance:    0,
-        coastlineDistance:  0,
-        growthPercentage:   this.model.attributes.Suburb.GrowthPercentage,
-        population:         this.model.attributes.Suburb.Population,
-        sizeSquared:        this.model.attributes.Suburb.SizeKmSquared,
-        percentFemale:      this.model.attributes.Suburb.PercentFemales,
-        percentMale:        this.model.attributes.Suburb.PercentMales
+        suburbName:              this.model.displayName(),
+        postCode:                this.model.postCode(),
+        nbnLastWorkCommenceYear: this.model.nbnLastWorkCommence(),
+        suburbInfo:              this.model.attributes.Suburb.Description,
+        avgCostPurchase:         this.model.attributes.Suburb.Price,
+        cbdDistance:             this.model.attributes.Suburb.DistanceToCityText,
+        cbdTiming:               this.model.attributes.Suburb.TimeToCityText,
+        growthPercentage:        this.model.attributes.Suburb.GrowthPercentage,
+        population:              this.model.attributes.Suburb.Population,
+        sizeSquared:             this.model.attributes.Suburb.SizeKmSquared,
+        percentFemale:           this.model.attributes.Suburb.PercentFemales,
+        percentMale:             this.model.attributes.Suburb.PercentMales,
+        numNightLife:            this.model.attributes.Suburb.NumNightlife,
+        numArtsLife:             this.model.attributes.Suburb.NumArtsAndRecreation
       };
 
       return response;
