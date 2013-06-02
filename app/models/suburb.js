@@ -21,7 +21,7 @@ define([
     },
 
     postCode: function() {
-      var code = "0000";
+      var code = "";
       if (this.attributes.Suburb.Postcodes) {
         var first_code = this.attributes.Suburb.Postcodes[0];
         if (first_code)
@@ -53,6 +53,10 @@ define([
       return "http://maps.googleapis.com/maps/api/streetview?size=400x100&location=" + this.address() +"&pitch=1&sensor=false"
     },
 
+    percentage: function() {
+      return (100 - this.attributes.RankCoefficient);
+    },
+
     populateLocation: function(location_callback) {
       var geocoder = new google.maps.Geocoder();
       var context = this;
@@ -78,16 +82,6 @@ define([
       return arry;
     },
 
-    postCode: function() {
-      var code = "0000";
-      if (this.attributes.Postcodes) {
-        var first_code = this.attributes.Postcodes[0];
-        if (first_code)
-          code = first_code
-      }
-      return code;
-    },
-
     buildInfoWindow: function() {
       if (this.attributes["info_window"])
         return this.attributes["info_window"];
@@ -96,8 +90,8 @@ define([
       var content_string = "<div class=\"suburb-info-box\">";
       content_string += "<div class=\"image\"><img src=\"" + this.streetViewImage() + "\" width=\"365\" height=\"65\" /></div>";
       content_string += "<div class=\"copy\">";
-      content_string += "<h1>" + this.displayName() + "<span>" + this.attributes.percent + "<small>%</small><span></h1>";
-      content_string += "<h3>" + this.postCode() + "<span>" + this.attributes.DistanceToCityText + "to the CBD.</span></h3>";
+      content_string += "<h1>" + this.displayName() + "<span>" + this.percentage() + "<small>%</small><span></h1>";
+      content_string += "<h3>" + this.postCode() + "<span>" + this.attributes.Suburb.DistanceToCityText + " to the CBD.</span></h3>";
       content_string += "</div>";
       content_string += "</div>";
       boxText.innerHTML = content_string;
