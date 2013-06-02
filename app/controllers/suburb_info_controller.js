@@ -16,6 +16,7 @@ define([
 
     var showSuburbInfo = function(suburb) {
       loadView();
+      bindEvents();
 
       SuburbInfoController.activeView.model = suburb;
       SuburbInfoController.activeView.el.show();
@@ -26,11 +27,26 @@ define([
       SuburbInfoController.activeView.el.hide();
     }
 
+    var handleCloseResults = function(event) {
+      event.preventDefault();
+      SuburbInfoController.hideSuburbInfo();
+    }
+
+    var bindEvents = function() {
+      if (SuburbInfoController.binded)
+        return;
+
+      $("#suburb-info").on("click", ".close-results", SuburbInfoController.handleCloseResults)
+      SuburbInfoController.binded = true;
+    }
+
     return {
-      loadView:       loadView,
-      showSuburbInfo: showSuburbInfo,
-      hideSuburbInfo: hideSuburbInfo,
-      activeView:     null
+      loadView:           loadView,
+      showSuburbInfo:     showSuburbInfo,
+      hideSuburbInfo:     hideSuburbInfo,
+      handleCloseResults: handleCloseResults,
+      binded:             false,
+      activeView:         null
     }
 
   })();
