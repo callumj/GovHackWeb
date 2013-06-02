@@ -12,6 +12,13 @@ define([
       Map.loadedMap();
     }
 
+    var reset = function() {
+      dropData();
+      animateMapOut();
+      SuburbInfoController.hideSuburbInfo();
+      MapController.activeSuburb = null;
+    }
+
     var setData = function(data_set) {
       MapController.dataSet = data_set;
     }
@@ -46,7 +53,6 @@ define([
     }
 
     var animateMapOut = function() {
-      dropData();
       var map_div = $( Map.loadedMap().getDiv());
       map_div.removeClass("foreground");
       map_div.parents("#map-container").removeClass("foreground");
@@ -91,7 +97,6 @@ define([
 
     var resizeMap = function() {
       google.maps.event.trigger(Map.loadedMap(), 'resize');
-
     }
 
     var animateMarkers = function() {
@@ -111,6 +116,7 @@ define([
     var markerClickedEvent = function(model, event) {
       if (MapController.activeSuburb == null || MapController.activeSuburb != model) {
         SuburbInfoController.showSuburbInfo(model);
+        MapController.activeSuburb = model;
       } else if (MapController.activeSuburb == model) {
         SuburbInfoController.hideSuburbInfo();
         MapController.activeSuburb = null;
@@ -121,6 +127,7 @@ define([
       setData:            setData,
       drawData:           drawData,
       initMap:            initMap,
+      reset:              reset,
       locationReady:      locationReady,
       drawMarkers:        drawMarkers,
       centerMap:          centerMap,

@@ -10,14 +10,20 @@ define([
 
     serialize: function() {
       var response = {
-        suburbName:         this.model.Name,
-        postCode:           this.model.postCode(),
+        suburbName:         this.displayName(),
+        postCode:           this.postCode(),
         suburbInfo:         "",
-        avgCostPurchase:    this.model.Price,
+        avgCostPurchase:    this.model.attributes.Price,
         avgCostRent:        0,
-        cbdDistance:        this.model.DistanceToCityText,
+        cbdDistance:        this.model.attributes.DistanceToCityText,
+        cbdTiming:          this.model.attributes.TimeToCityText,
         airportDistance:    0,
-        coastlineDistance:  0
+        coastlineDistance:  0,
+        growthPercentage:   this.model.attributes.GrowthPercentage,
+        population:         this.model.attributes.Population,
+        sizeSquared:        this.model.attributes.SizeKmSquared,
+        percentFemale:      this.model.attributes.PercentFemales,
+        percentMale:        this.model.attributes.PercentMales
       };
 
       return response;
@@ -30,12 +36,18 @@ define([
 
     postCode: function() {
       var code = "0000";
-      if (this.model.Postcodes) {
-        var first_code = this.model.Postcodes[0];
+      if (this.model.attributes.Postcodes) {
+        var first_code = this.model.attributes.Postcodes[0];
         if (first_code)
-          code = first_code
+          code = first_code.Id
       }
       return code;
+    },
+
+    displayName: function() {
+      return this.model.attributes.Name.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+          return match.toUpperCase();
+      });
     }
   });
 

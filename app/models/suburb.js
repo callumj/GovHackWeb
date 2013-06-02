@@ -20,6 +20,12 @@ define([
         this.attributes.polygon.setMap(null);
     },
 
+    displayName: function() {
+      return this.attributes.Name.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+        return match.toUpperCase();
+      });
+    },
+
     address: function() {
       return this.attributes.Name + ", " + this.attributes.State;
     },
@@ -69,8 +75,7 @@ define([
       var boxText = document.createElement("div");
       boxText.style.cssText = "background: white";
       var content_string = "<div class=\"info_box\">";
-      content_string += "<div class=\"title\"><h2>" + this.attributes.Name + "</h2></div>";
-      content_string += "<div class=\"percent\">" + this.attributes.percent + "%</div>";
+      content_string += "<div class=\"title\"><h2>" + this.displayName() + "</h2></div>";
       content_string += "<div class=\"street-view\"><img src=\"" + this.streetViewImage() + "\" width=\"400\" height=\"100\" /></div>";
       content_string += "</div>"
       boxText.innerHTML = content_string;
@@ -95,11 +100,11 @@ define([
       var set = this.polygonArray();
       var polygon = new google.maps.Polygon({
         paths: set,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35
+        strokeColor: '#28b263',
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+        fillColor: '#31d978',
+        fillOpacity: 0.50
       });
 
       polygon.setMap(Map.loadedMap());
