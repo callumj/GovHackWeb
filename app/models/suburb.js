@@ -84,8 +84,7 @@ define([
         pixelOffset:    new google.maps.Size(-(400 / 2), 0),
         position:       this.centerLocation(),
         content:        boxText,
-        closeBoxURL:    "http://www.google.com/intl/en_us/mapfiles/close.gif",
-        closeBoxMargin: "10px 2px 2px 2px",
+        closeBoxURL:    "",
         boxStyle: {
           width: "400px",
           height: "400px"
@@ -126,6 +125,12 @@ define([
       });
       google.maps.event.addListener(polygon, 'click', function(event) {
         context.markerClickEvent(context, event);
+      });
+
+      google.maps.event.addListener(context.buildInfoWindow(), 'domready', function() {
+        debugger;
+        $(".info_box").parent().css("position", "absolute");
+        $(".info_box").parent().css("top", "0px");
       });
     },
 
