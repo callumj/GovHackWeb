@@ -10,6 +10,7 @@ define([
 
     render: function() {
       this.el.html(Templates["templates/question_view.html"](this.serialize()));
+      this.afterRender();
     },
 
     isBool: function() {
