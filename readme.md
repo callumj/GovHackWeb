@@ -4,7 +4,7 @@ This heavily prototyped Backbone application provides a simple interface to a po
 
 ## Requirements
 
-This projects make use of the Grunt build system, which is distributed by npm. The recommended procedure for intalling Grunt is:
+This projects make use of the Grunt build system, which is distributed by npm. The recommended procedure for installing Grunt is:
 
 ```bash
 npm uninstall -g grunt
