@@ -3,10 +3,14 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'handlebars'
-], function($, unds, Backbone, Handlebars) {
+  'handlebars',
+  'app_template'
+], function($, unds, Backbone, Handlebars, Templates) {
   var QuestionView = Backbone.View.extend({
-    template: "question_view",
+
+    render: function() {
+      this.el.html(Templates["templates/question_view.html"](this.serialize()));
+    },
 
     isBool: function() {
       return this.model.type == "boolean";

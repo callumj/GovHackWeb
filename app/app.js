@@ -16,7 +16,7 @@ define([
   // Configure LayoutManager with Backbone Boilerplate defaults.
   Backbone.LayoutManager.configure({
     // Allow LayoutManager to augment Backbone.View.prototype.
-    manage: true,
+    manage: false,
 
     prefix: "app/templates/",
 

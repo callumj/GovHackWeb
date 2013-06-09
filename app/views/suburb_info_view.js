@@ -3,10 +3,14 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'handlebars'
-], function($, unds, Backbone, Handlebars) {
+  'handlebars',
+  'app_template'
+], function($, unds, Backbone, Handlebars, Templates) {
   var SuburbInfoView = Backbone.View.extend({
-    template: "suburb_info_view",
+
+    render: function() {
+      this.el.html(Templates["templates/suburb_info_view.html"](this.serialize()));
+    },
 
     serialize: function() {
       var response = {

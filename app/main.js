@@ -5,6 +5,7 @@ require([
   // Main Router.
   "router",
 
+  // Primary starting point
   "controllers/question_controller"
 ],
 
