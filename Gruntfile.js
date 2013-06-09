@@ -102,6 +102,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-regex-replace');
 
   grunt.registerTask('index', ['uglify', 'copy', 'dom_munger'])
-  grunt.registerTask('dist', ['requirejs', 'cssmin', 'index', 'regex-replace']);
+  grunt.registerTask('dist', ['handlebars', 'requirejs', 'cssmin', 'index', 'regex-replace']);
 
 };
