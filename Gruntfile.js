@@ -7,20 +7,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      build: {
-        src: 'src/<%= pkg.name %>.js',
-        dest: 'build/<%= pkg.name %>.min.js'
-      }
-    },
-    requirejs: {
-      compile: {
-        options: opt
-      }
-    },
     handlebars: {
       compile: {
         options: {
@@ -30,6 +16,12 @@ module.exports = function(grunt) {
           "app/templates.js": ["templates/*.html"]
         }
       }
+    },
+    watch: {
+      templates: {
+        files: ["templates/*.html"],
+        tasks: ['handlebars']
+      }
     }
   });
 
@@ -37,5 +29,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
 };

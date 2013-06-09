@@ -109,7 +109,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (stack1 = helpers.streetViewImage) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.streetViewImage; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + ");\">\n<div id=\"results-share\" class=\"open\">\n  <ul>\n    <li><span style=\"background-position: 1px 4px;\"></span>Share</li>\n    <li><a href=\"#\"><span style=\"background-position: 1px -40px;\"></span>Twitter</a></li>\n    <li><a href=\"#\"><span style=\"background-position: 1px -89px;\"></span>Facebook</a></li>\n    <li><a href=\"mailto:?subject=Check out Malands!\"><span style=\"background-position: 1px -135px;\"></span>Email</a></li>\n  </ul>\n</div>\n\n<a href=\"#\" id=\"close-results\">back</a>\n\n <h1>";
+    + ");\">\n  <div id=\"results-share\" class=\"open\">\n    <ul>\n      <li><span style=\"background-position: 1px 4px;\"></span>Share</li>\n      <li><a href=\"#\"><span style=\"background-position: 1px -40px;\"></span>Twitter</a></li>\n      <li><a href=\"#\"><span style=\"background-position: 1px -89px;\"></span>Facebook</a></li>\n      <li><a href=\"mailto:?subject=Check out Malands!\"><span style=\"background-position: 1px -135px;\"></span>Email</a></li>\n    </ul>\n  </div>\n\n  <a href=\"#\" id=\"close-results\">back</a>\n\n <h1>";
   if (stack1 = helpers.suburbName) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.suburbName; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
