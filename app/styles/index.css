@@ -1,8 +1,6 @@
-@import url(../../vendor/h5bp/css/normalize.css);
-/*@import url(../../vendor/h5bp/css/main.css);*/
+@import url(normalize.css);
 @import url(fonts.css);
-/*-- HTML5 Boilerplate. ----------------------------------------------------- */
-/*-- Application stylesheets. ----------------------------------------------- */
+@import url(animations.css);
 * {
   font-family: "CoreSansN35Light";
   -webkit-box-sizing: border-box;

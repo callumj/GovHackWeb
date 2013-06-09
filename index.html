@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>PlaceMe</title>
-  <link rel="stylesheet" href="app/styles/animations.css">
-  <link rel="stylesheet" href="app/styles/index.css">
+  <link class="remove_directive" rel="stylesheet" href="app/styles/animations.css">
+  <link id="primary_css" rel="stylesheet" href="app/styles/index.css">
 </head>
 
 <body>
   <main role="main" id="main">
   </main>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARYxWXRAb58n_lA3X_YhLQ2zA94PGNFoM&sensor=true"></script>
-  <script data-main="config/require.config.js" src="node_modules/grunt-contrib-requirejs/node_modules/requirejs/require.js"></script>
+  <script id="primary_js" data-main="config/require.config.js" src="node_modules/grunt-contrib-requirejs/node_modules/requirejs/require.js"></script>
   <header>
       <div class="logo-container">
         <div class="map"></div>
@@ -33,8 +33,6 @@
   <section id="about-placeme">
     <div class="about-content">
       <div class="our-app">
-
-
 
 
         <h1>find your lifestyle, not your house.</h1>

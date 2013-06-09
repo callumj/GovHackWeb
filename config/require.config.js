@@ -2,7 +2,6 @@ var requirejs_config = ({
     name: "main",
     deps: ["main"],
     baseUrl: "app/",
-    out: "build/application.js",
     paths: {
         backbone:                            "../vendor/backbone/backbone",
         "backbone.layoutmanager": "../vendor/backbone.layoutmanager/backbone.layoutmanager",
